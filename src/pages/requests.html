@@ -1,0 +1,23 @@
+<!-- {"title":"Open buying requests","desc":"Canadian buyers post what they need. Suppliers reply with a quote. See open buying requests by category and province.","page":"requests","nav":"requests"} -->
+<section class="phero phero-sell">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / Buying requests</nav>
+    <h1 class="ruled">Open buying requests</h1>
+    <p class="lead">Canadian buyers post what they need. You reply with a quote. Each request accepts ten quotes, then closes.</p>
+    <div class="row"><a class="btn btn-sell" href="{{REGISTER}}">Register to quote</a><a class="btn btn-glass" href="post-request.html">I’m a buyer, post a request</a></div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap catalog">
+    <form class="panel filters" id="filters" aria-label="Filter requests">
+      <fieldset id="fCat"><legend>Category</legend></fieldset>
+      <fieldset id="fProv"><legend>Deliver to</legend></fieldset>
+      <fieldset><legend>Quote slots</legend><label><input type="checkbox" id="fOpen">5 or more slots left</label></fieldset>
+    </form>
+    <div>
+      <div class="toolbar"><strong id="reqCount" style="color:var(--ink)" aria-live="polite"></strong><span class="small muted">We remember your category for next time.</span></div>
+      <div class="req-list" id="reqList"></div>
+      <p class="note">Sample requests. Buyer names stay private until a supplier quotes.</p>
+    </div>
+  </div>
+</section>

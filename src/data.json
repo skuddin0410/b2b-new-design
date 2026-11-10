@@ -1,0 +1,1584 @@
+{
+ "cats": [
+  {
+   "id": "electronics",
+   "slug": "electronics",
+   "name": "Electronics",
+   "img": 1,
+   "icon": "chip",
+   "products": "1,200+",
+   "vendors": "30+",
+   "wanted": true,
+   "blurb": "Laptops, monitors, networking and POS hardware",
+   "intro": "Equip an office, a store or a field team in one order. Compare business laptops, point-of-sale kits and networking gear from Canadian resellers, with volume pricing shown up front.",
+   "subs": [
+    "Laptops and computers",
+    "POS hardware",
+    "Monitors",
+    "Networking",
+    "Peripherals"
+   ],
+   "tell": [
+    "Processor, memory and storage you need",
+    "How many units, and when each batch should arrive",
+    "Keyboard layout: English or Canadian French",
+    "Setup needs, such as imaging or asset tags",
+    "Warranty length and who handles repairs"
+   ],
+   "words": [
+    "laptop",
+    "laptops",
+    "computer",
+    "monitor",
+    "pos",
+    "terminal",
+    "network",
+    "router",
+    "printer",
+    "scanner",
+    "tablet"
+   ]
+  },
+  {
+   "id": "industrial",
+   "slug": "industrial-equipment",
+   "name": "Industrial Equipment",
+   "img": 2,
+   "icon": "factory",
+   "products": "850+",
+   "vendors": "51+",
+   "wanted": true,
+   "blurb": "Material handling, safety gear and tools",
+   "intro": "Keep a warehouse or job site running. Source pallet jacks, carts, dock equipment and protective gear from distributors who deliver across the provinces.",
+   "subs": [
+    "Material handling",
+    "Safety equipment",
+    "Dock equipment",
+    "Tools",
+    "Storage and racking"
+   ],
+   "tell": [
+    "Load capacity and the dimensions that matter",
+    "The safety standard your site requires",
+    "Where it will be used: indoor, outdoor, cold storage",
+    "Delivery access: loading dock or liftgate",
+    "Spare parts and service you expect"
+   ],
+   "words": [
+    "pallet",
+    "jack",
+    "hard",
+    "hat",
+    "hats",
+    "safety",
+    "vest",
+    "vests",
+    "forklift",
+    "cart",
+    "dock",
+    "tools",
+    "ppe",
+    "gloves"
+   ]
+  },
+  {
+   "id": "office",
+   "slug": "office-supplies",
+   "name": "Office Supplies",
+   "img": 3,
+   "icon": "clip",
+   "products": "2,500+",
+   "vendors": "29+",
+   "wanted": true,
+   "blurb": "Paper, stationery and office furniture",
+   "intro": "Stock the supply room and furnish the floor. Order paper by the case, stationery by the bundle and chairs by the dozen, with service in English and French.",
+   "subs": [
+    "Paper and printing",
+    "Stationery",
+    "Office furniture",
+    "Breakroom",
+    "Cleaning supplies"
+   ],
+   "tell": [
+    "How many people the order is for",
+    "Brands or recycled content you prefer",
+    "One delivery or a monthly schedule",
+    "Whether furniture should arrive assembled",
+    "Floor, elevator and delivery-hour limits"
+   ],
+   "words": [
+    "paper",
+    "stationery",
+    "chair",
+    "chairs",
+    "desk",
+    "desks",
+    "pens",
+    "binder",
+    "toner",
+    "office",
+    "furniture"
+   ]
+  },
+  {
+   "id": "transport",
+   "slug": "transportation",
+   "name": "Transportation",
+   "img": 4,
+   "icon": "truck",
+   "products": "320+",
+   "vendors": "49+",
+   "wanted": true,
+   "blurb": "Fleet parts, upfitting and accessories",
+   "intro": "Outfit work vans and service trucks. Find roof racks, lighting and replacement parts from fleet suppliers in British Columbia, Alberta and beyond.",
+   "subs": [
+    "Upfitting",
+    "Vehicle lighting",
+    "Fleet parts",
+    "Tires and wheels",
+    "Trailers"
+   ],
+   "tell": [
+    "Make, model and year of each vehicle",
+    "How many vehicles are in the fleet",
+    "Supply only, or supply and install",
+    "Voltage and mounting details",
+    "When vehicles can be off the road"
+   ],
+   "words": [
+    "van",
+    "truck",
+    "fleet",
+    "rack",
+    "light",
+    "bar",
+    "tire",
+    "tires",
+    "trailer",
+    "vehicle",
+    "upfit"
+   ]
+  },
+  {
+   "id": "building",
+   "slug": "building-materials",
+   "name": "Building Materials",
+   "img": 5,
+   "icon": "brick",
+   "products": "1,800+",
+   "vendors": "47+",
+   "wanted": true,
+   "blurb": "Lumber, insulation and site supplies",
+   "intro": "Price a project before you break ground. Request lumber, insulation and site materials by the unit or the pallet, delivered to the job site.",
+   "subs": [
+    "Lumber",
+    "Insulation",
+    "Drywall",
+    "Roofing",
+    "Site supplies"
+   ],
+   "tell": [
+    "Sizes, grades and ratings, such as R-22",
+    "Quantity by piece, bundle or pallet",
+    "Site address and how a truck gets in",
+    "Delivery in one drop or by build phase",
+    "Any code or inspection requirement"
+   ],
+   "words": [
+    "lumber",
+    "insulation",
+    "drywall",
+    "roofing",
+    "concrete",
+    "batts",
+    "plywood",
+    "shingles",
+    "wood",
+    "mineral",
+    "wool"
+   ]
+  },
+  {
+   "id": "energy",
+   "slug": "energy-solutions",
+   "name": "Energy Solutions",
+   "img": 6,
+   "icon": "sun",
+   "products": "450+",
+   "vendors": "11+",
+   "wanted": true,
+   "blurb": "Solar panels, inverters and mounting",
+   "intro": "Cut power costs on a roof, a farm or a remote site. Compare solar panels, inverters and racking from Canadian distributors, quoted for your system size.",
+   "subs": [
+    "Solar panels",
+    "Inverters",
+    "Mounting and racking",
+    "Batteries",
+    "EV charging"
+   ],
+   "tell": [
+    "Target system size in kilowatts",
+    "Rooftop or ground mount, and the surface type",
+    "Grid-tied, battery backup or off-grid",
+    "Approvals required in your province",
+    "Supply only, or supply and install"
+   ],
+   "words": [
+    "solar",
+    "panel",
+    "panels",
+    "inverter",
+    "battery",
+    "batteries",
+    "racking",
+    "ev",
+    "charger",
+    "kw"
+   ]
+  },
+  {
+   "id": "retail",
+   "slug": "retail-products",
+   "name": "Retail Products",
+   "img": 7,
+   "icon": "bag",
+   "products": "3,200+",
+   "vendors": "40+",
+   "wanted": false,
+   "blurb": "Wholesale goods for resale",
+   "intro": "Fill the shelves with products that sell. Buy shelf-stable grocery, seasonal goods and displays by the case from Canadian wholesalers.",
+   "subs": [
+    "Grocery wholesale",
+    "Health and beauty",
+    "Seasonal",
+    "Displays and fixtures",
+    "Gifts and novelty"
+   ],
+   "tell": [
+    "Your store type and who shops there",
+    "Bilingual labelling requirements",
+    "Shelf life you need on arrival",
+    "Case sizes that fit your storage",
+    "How often you plan to reorder"
+   ],
+   "words": [
+    "grocery",
+    "pantry",
+    "snacks",
+    "retail",
+    "display",
+    "displays",
+    "seasonal",
+    "candy",
+    "beverage",
+    "gift"
+   ]
+  },
+  {
+   "id": "packaging",
+   "slug": "packaging",
+   "name": "Packaging",
+   "img": 8,
+   "icon": "box",
+   "products": "1,100+",
+   "vendors": "55+",
+   "wanted": false,
+   "blurb": "Boxes, mailers, labels and wrap",
+   "intro": "Ship more orders with fewer supply runs. Buy corrugated boxes, mailers, labels and stretch wrap in bulk, priced by quantity.",
+   "subs": [
+    "Corrugated boxes",
+    "Mailers",
+    "Labels",
+    "Stretch wrap",
+    "Custom printed"
+   ],
+   "tell": [
+    "Inside dimensions of the box or mailer",
+    "Board strength or film gauge",
+    "Plain, or printed with your logo",
+    "How many you use in a month",
+    "One delivery or scheduled drops"
+   ],
+   "words": [
+    "box",
+    "boxes",
+    "corrugated",
+    "mailer",
+    "mailers",
+    "label",
+    "labels",
+    "wrap",
+    "tape",
+    "carton",
+    "cartons",
+    "shipping"
+   ]
+  }
+ ],
+ "products": [
+  {
+   "id": "p1",
+   "name": "Corrugated Shipping Boxes, 12 × 10 × 8 in (bundle of 250)",
+   "cat": "packaging",
+   "sub": "Corrugated boxes",
+   "min": 178,
+   "max": 214,
+   "unit": "bundle",
+   "units": "bundles",
+   "moq": 5,
+   "sup": "s1",
+   "lead": "5–7 business days",
+   "specs": [
+    [
+     "Dimensions",
+     "12 × 10 × 8 in (inside)"
+    ],
+    [
+     "Board",
+     "Single wall, 32 ECT"
+    ],
+    [
+     "Pack size",
+     "250 boxes per bundle"
+    ],
+    [
+     "Colour",
+     "Kraft"
+    ]
+   ],
+   "desc": "Single-wall kraft shipping boxes sized for apparel, books and small goods. Shipped flat.",
+   "img": 8,
+   "days": 5
+  },
+  {
+   "id": "p2",
+   "name": "Multipurpose Copy Paper, 8.5 × 11 in, 5,000 sheets",
+   "cat": "office",
+   "sub": "Paper and printing",
+   "min": 41,
+   "max": 52,
+   "unit": "case",
+   "units": "cases",
+   "moq": 20,
+   "sup": "s2",
+   "lead": "3–5 business days",
+   "specs": [
+    [
+     "Size",
+     "Letter, 8.5 × 11 in"
+    ],
+    [
+     "Weight",
+     "20 lb"
+    ],
+    [
+     "Brightness",
+     "92"
+    ],
+    [
+     "Pack size",
+     "10 reams of 500 sheets"
+    ]
+   ],
+   "desc": "Everyday copy paper for laser and inkjet printers.",
+   "img": 3,
+   "days": 3
+  },
+  {
+   "id": "p3",
+   "name": "Shelf-Stable Pantry Assortment, Mixed Case (48 ct)",
+   "cat": "retail",
+   "sub": "Grocery wholesale",
+   "min": 96,
+   "max": 118,
+   "unit": "case",
+   "units": "cases",
+   "moq": 10,
+   "sup": "s3",
+   "lead": "4–6 business days",
+   "specs": [
+    [
+     "Count",
+     "48 items per case"
+    ],
+    [
+     "Contents",
+     "Mixed snacks and pantry staples"
+    ],
+    [
+     "Labelling",
+     "Confirm bilingual labelling with supplier"
+    ],
+    [
+     "Storage",
+     "Ambient"
+    ]
+   ],
+   "desc": "A mixed case of shelf-stable items for convenience retail and office pantries.",
+   "img": 7,
+   "days": 4
+  },
+  {
+   "id": "p4",
+   "name": "Poly Mailers, 10 × 13 in, Self-Seal (case of 1,000)",
+   "cat": "packaging",
+   "sub": "Mailers",
+   "min": 64,
+   "max": 82,
+   "unit": "case",
+   "units": "cases",
+   "moq": 10,
+   "sup": "s1",
+   "lead": "5–7 business days",
+   "specs": [
+    [
+     "Size",
+     "10 × 13 in"
+    ],
+    [
+     "Thickness",
+     "2.5 mil"
+    ],
+    [
+     "Closure",
+     "Self-seal adhesive strip"
+    ],
+    [
+     "Pack size",
+     "1,000 per case"
+    ]
+   ],
+   "desc": "Lightweight, water-resistant mailers for apparel and soft goods.",
+   "img": 8,
+   "days": 5
+  },
+  {
+   "id": "p5",
+   "name": "Stationery Starter Bundle for 25 Staff",
+   "cat": "office",
+   "sub": "Stationery",
+   "min": 212,
+   "max": 245,
+   "unit": "bundle",
+   "units": "bundles",
+   "moq": 2,
+   "sup": "s2",
+   "lead": "3–5 business days",
+   "specs": [
+    [
+     "Serves",
+     "Approx. 25 staff"
+    ],
+    [
+     "Includes",
+     "Pens, notebooks, sticky notes, binders, staplers"
+    ],
+    [
+     "Customization",
+     "Ask supplier"
+    ]
+   ],
+   "desc": "A ready-to-ship stationery kit for new offices and onboarding.",
+   "img": 3,
+   "days": 3
+  },
+  {
+   "id": "p6",
+   "name": "Vented Safety Hard Hats, Ratchet Suspension (box of 20)",
+   "cat": "industrial",
+   "sub": "Safety equipment",
+   "min": 148,
+   "max": 176,
+   "unit": "box",
+   "units": "boxes",
+   "moq": 10,
+   "sup": "s4",
+   "lead": "5–8 business days",
+   "specs": [
+    [
+     "Pack size",
+     "20 per box"
+    ],
+    [
+     "Suspension",
+     "4-point ratchet"
+    ],
+    [
+     "Colours",
+     "White, yellow, orange"
+    ],
+    [
+     "Certification",
+     "Confirm standard with supplier"
+    ]
+   ],
+   "desc": "Vented hard hats for general construction and warehouse use.",
+   "img": 2,
+   "days": 5
+  },
+  {
+   "id": "p7",
+   "name": "Thermal Shipping Labels, 4 × 6 in (24 rolls)",
+   "cat": "packaging",
+   "sub": "Labels",
+   "min": 88,
+   "max": 109,
+   "unit": "carton",
+   "units": "cartons",
+   "moq": 5,
+   "sup": "s1",
+   "lead": "5–7 business days",
+   "specs": [
+    [
+     "Size",
+     "4 × 6 in"
+    ],
+    [
+     "Type",
+     "Direct thermal"
+    ],
+    [
+     "Pack size",
+     "24 rolls of 250 labels"
+    ],
+    [
+     "Core",
+     "1 in"
+    ]
+   ],
+   "desc": "Direct thermal labels compatible with most desktop shipping printers.",
+   "img": 8,
+   "days": 5
+  },
+  {
+   "id": "p8",
+   "name": "15.6 in Business Laptop, Core i5, 16 GB / 512 GB",
+   "cat": "electronics",
+   "sub": "Laptops and computers",
+   "min": 689,
+   "max": 749,
+   "unit": "unit",
+   "units": "units",
+   "moq": 10,
+   "sup": "s5",
+   "lead": "7–10 business days",
+   "specs": [
+    [
+     "Display",
+     "15.6 in FHD"
+    ],
+    [
+     "Processor",
+     "Intel Core i5"
+    ],
+    [
+     "Memory / storage",
+     "16 GB / 512 GB SSD"
+    ],
+    [
+     "Keyboard",
+     "English or Canadian French"
+    ]
+   ],
+   "desc": "A business-class laptop for office and field teams, imaged and shipped in volume.",
+   "img": 1,
+   "days": 7
+  },
+  {
+   "id": "p9",
+   "name": "Monocrystalline Solar Panel, 410 W",
+   "cat": "energy",
+   "sub": "Solar panels",
+   "min": 245,
+   "max": 289,
+   "unit": "panel",
+   "units": "panels",
+   "moq": 20,
+   "sup": "s6",
+   "lead": "2–3 weeks",
+   "specs": [
+    [
+     "Output",
+     "410 W"
+    ],
+    [
+     "Cell type",
+     "Monocrystalline"
+    ],
+    [
+     "Dimensions",
+     "Confirm with supplier"
+    ],
+    [
+     "Warranty",
+     "Confirm with supplier"
+    ]
+   ],
+   "desc": "High-efficiency panels for commercial rooftop and ground-mount projects.",
+   "img": 6,
+   "days": 14
+  },
+  {
+   "id": "p10",
+   "name": "Hybrid Solar Inverter, 8 kW",
+   "cat": "energy",
+   "sub": "Inverters",
+   "min": null,
+   "max": null,
+   "unit": "unit",
+   "units": "units",
+   "moq": 2,
+   "sup": "s6",
+   "lead": "2–4 weeks",
+   "specs": [
+    [
+     "Rated output",
+     "8 kW"
+    ],
+    [
+     "Type",
+     "Hybrid, battery-ready"
+    ],
+    [
+     "Approvals",
+     "Confirm with supplier"
+    ]
+   ],
+   "desc": "Battery-ready hybrid inverter. Pricing depends on configuration and quantity.",
+   "img": 6,
+   "days": 14
+  },
+  {
+   "id": "p11",
+   "name": "Manual Pallet Jack, 5,500 lb Capacity",
+   "cat": "industrial",
+   "sub": "Material handling",
+   "min": 429,
+   "max": 489,
+   "unit": "unit",
+   "units": "units",
+   "moq": 2,
+   "sup": "s4",
+   "lead": "1–2 weeks",
+   "specs": [
+    [
+     "Capacity",
+     "5,500 lb"
+    ],
+    [
+     "Fork size",
+     "27 × 48 in"
+    ],
+    [
+     "Wheels",
+     "Polyurethane"
+    ]
+   ],
+   "desc": "A standard manual pallet jack for warehouses and loading docks.",
+   "img": 2,
+   "days": 7
+  },
+  {
+   "id": "p12",
+   "name": "Mineral Wool Insulation Batts, R-22",
+   "cat": "building",
+   "sub": "Insulation",
+   "min": 72,
+   "max": 88,
+   "unit": "bundle",
+   "units": "bundles",
+   "moq": 40,
+   "sup": "s8",
+   "lead": "1–2 weeks",
+   "specs": [
+    [
+     "Rating",
+     "R-22"
+    ],
+    [
+     "Fits",
+     "2 × 6 framing"
+    ],
+    [
+     "Coverage",
+     "Confirm per bundle with supplier"
+    ]
+   ],
+   "desc": "Fire-resistant mineral wool batts for exterior walls.",
+   "img": 5,
+   "days": 7
+  },
+  {
+   "id": "p13",
+   "name": "Machine Stretch Wrap, 20 in × 5,000 ft",
+   "cat": "packaging",
+   "sub": "Stretch wrap",
+   "min": 39,
+   "max": 47,
+   "unit": "roll",
+   "units": "rolls",
+   "moq": 24,
+   "sup": "s1",
+   "lead": "5–7 business days",
+   "specs": [
+    [
+     "Width",
+     "20 in"
+    ],
+    [
+     "Length",
+     "5,000 ft"
+    ],
+    [
+     "Gauge",
+     "80"
+    ]
+   ],
+   "desc": "Cast stretch film for machine wrapping of palletized loads.",
+   "img": 8,
+   "days": 5
+  },
+  {
+   "id": "p14",
+   "name": "Ergonomic Mesh Office Chair",
+   "cat": "office",
+   "sub": "Office furniture",
+   "min": 168,
+   "max": 199,
+   "unit": "chair",
+   "units": "chairs",
+   "moq": 10,
+   "sup": "s2",
+   "lead": "2–3 weeks",
+   "specs": [
+    [
+     "Back",
+     "Breathable mesh"
+    ],
+    [
+     "Adjustments",
+     "Height, tilt, lumbar, arms"
+    ],
+    [
+     "Assembly",
+     "Ask supplier"
+    ]
+   ],
+   "desc": "An adjustable task chair for open offices and home workstations.",
+   "img": 3,
+   "days": 14
+  },
+  {
+   "id": "p15",
+   "name": "Countertop POS Terminal Kit",
+   "cat": "electronics",
+   "sub": "POS hardware",
+   "min": null,
+   "max": null,
+   "unit": "kit",
+   "units": "kits",
+   "moq": 5,
+   "sup": "s5",
+   "lead": "1–2 weeks",
+   "specs": [
+    [
+     "Includes",
+     "Terminal, receipt printer, cash drawer, scanner"
+    ],
+    [
+     "Software",
+     "Not included"
+    ]
+   ],
+   "desc": "A countertop point-of-sale hardware bundle. Pricing depends on configuration.",
+   "img": 1,
+   "days": 7
+  },
+  {
+   "id": "p16",
+   "name": "Cargo Van Roof Rack System",
+   "cat": "transport",
+   "sub": "Upfitting",
+   "min": 612,
+   "max": 698,
+   "unit": "set",
+   "units": "sets",
+   "moq": 3,
+   "sup": "s7",
+   "lead": "2–3 weeks",
+   "specs": [
+    [
+     "Fits",
+     "Confirm vehicle model with supplier"
+    ],
+    [
+     "Material",
+     "Aluminum"
+    ],
+    [
+     "Includes",
+     "Rails, crossbars and hardware"
+    ]
+   ],
+   "desc": "Low-profile aluminum roof racks for commercial cargo vans.",
+   "img": 4,
+   "days": 14
+  },
+  {
+   "id": "p17",
+   "name": "LED Fleet Light Bar, 40 in",
+   "cat": "transport",
+   "sub": "Vehicle lighting",
+   "min": 118,
+   "max": 139,
+   "unit": "unit",
+   "units": "units",
+   "moq": 10,
+   "sup": "s7",
+   "lead": "1–2 weeks",
+   "specs": [
+    [
+     "Length",
+     "40 in"
+    ],
+    [
+     "Voltage",
+     "12–24 V"
+    ],
+    [
+     "Housing",
+     "Die-cast aluminum"
+    ]
+   ],
+   "desc": "Durable LED light bar for work trucks and service vehicles.",
+   "img": 4,
+   "days": 7
+  },
+  {
+   "id": "p18",
+   "name": "Pressure-Treated Lumber, 2 × 6 × 12 ft (unit of 100)",
+   "cat": "building",
+   "sub": "Lumber",
+   "min": null,
+   "max": null,
+   "unit": "unit",
+   "units": "units",
+   "moq": 1,
+   "sup": "s8",
+   "lead": "1–2 weeks",
+   "specs": [
+    [
+     "Size",
+     "2 × 6 in × 12 ft"
+    ],
+    [
+     "Treatment",
+     "Pressure-treated"
+    ],
+    [
+     "Pack size",
+     "100 pieces per unit"
+    ]
+   ],
+   "desc": "Structural lumber for decks and outdoor framing. Priced by quote due to market variation.",
+   "img": 5,
+   "days": 7
+  },
+  {
+   "id": "p19",
+   "name": "Corrugated Shipping Boxes, 16 × 12 × 10 in (bundle of 200)",
+   "cat": "packaging",
+   "sub": "Corrugated boxes",
+   "min": 196,
+   "max": 232,
+   "unit": "bundle",
+   "units": "bundles",
+   "moq": 4,
+   "sup": "s9",
+   "lead": "1–2 weeks",
+   "specs": [
+    [
+     "Dimensions",
+     "16 × 12 × 10 in (inside)"
+    ],
+    [
+     "Board",
+     "Single wall, 32 ECT"
+    ],
+    [
+     "Pack size",
+     "200 boxes per bundle"
+    ],
+    [
+     "Colour",
+     "Kraft"
+    ]
+   ],
+   "desc": "Larger single-wall kraft boxes for bulkier e-commerce orders. Shipped flat.",
+   "img": 8,
+   "days": 7
+  },
+  {
+   "id": "p20",
+   "name": "Manual Pallet Jack, 5,500 lb, Low Profile",
+   "cat": "industrial",
+   "sub": "Material handling",
+   "min": 455,
+   "max": 520,
+   "unit": "unit",
+   "units": "units",
+   "moq": 1,
+   "sup": "s10",
+   "lead": "3–5 business days",
+   "specs": [
+    [
+     "Capacity",
+     "5,500 lb"
+    ],
+    [
+     "Fork size",
+     "27 × 48 in"
+    ],
+    [
+     "Lowered height",
+     "Confirm with supplier"
+    ]
+   ],
+   "desc": "Low-profile manual pallet jack for standard and low-clearance pallets.",
+   "img": 2,
+   "days": 3
+  },
+  {
+   "id": "p21",
+   "name": "Manual Pallet Jack, 5,000 lb",
+   "cat": "industrial",
+   "sub": "Material handling",
+   "min": 399,
+   "max": 449,
+   "unit": "unit",
+   "units": "units",
+   "moq": 2,
+   "sup": "s11",
+   "lead": "2–3 weeks",
+   "specs": [
+    [
+     "Capacity",
+     "5,000 lb"
+    ],
+    [
+     "Fork size",
+     "27 × 48 in"
+    ]
+   ],
+   "desc": "Standard manual pallet jack for general warehouse use.",
+   "img": 2,
+   "days": 14
+  }
+ ],
+ "suppliers": [
+  {
+   "id": "s1",
+   "name": "PackagePro",
+   "city": "Mississauga",
+   "prov": "ON",
+   "type": "Distributor",
+   "cats": [
+    "packaging"
+   ],
+   "serves": "Ontario and Quebec",
+   "about": "Corrugated boxes, mailers, labels and stretch wrap in bulk for e-commerce and warehouse operations.",
+   "founded": 2011,
+   "caps": [
+    "Custom sizes",
+    "Printed logo",
+    "Sample orders",
+    "Pallet delivery"
+   ]
+  },
+  {
+   "id": "s2",
+   "name": "Office Essentials",
+   "city": "Montréal",
+   "prov": "QC",
+   "type": "Wholesaler",
+   "cats": [
+    "office"
+   ],
+   "serves": "Canada-wide",
+   "about": "Paper, stationery and office furniture for teams of every size, with service in English and French.",
+   "founded": 2004,
+   "caps": [
+    "Scheduled deliveries",
+    "Furniture assembly",
+    "Service in French"
+   ]
+  },
+  {
+   "id": "s3",
+   "name": "Maple Provisions",
+   "city": "Toronto",
+   "prov": "ON",
+   "type": "Wholesaler",
+   "cats": [
+    "retail"
+   ],
+   "serves": "Ontario",
+   "about": "Shelf-stable grocery assortments in mixed cases for independent retailers, offices and hospitality.",
+   "founded": 2016,
+   "caps": [
+    "Mixed cases",
+    "Bilingual labelling",
+    "Weekly delivery"
+   ]
+  },
+  {
+   "id": "s4",
+   "name": "SafeSite Supply",
+   "city": "Hamilton",
+   "prov": "ON",
+   "type": "Distributor",
+   "cats": [
+    "industrial"
+   ],
+   "serves": "Ontario and Manitoba",
+   "about": "Personal protective equipment and material handling equipment for job sites and warehouses.",
+   "founded": 2009,
+   "caps": [
+    "Site delivery",
+    "Bulk PPE programs",
+    "Fit testing"
+   ]
+  },
+  {
+   "id": "s5",
+   "name": "TechSupply Canada",
+   "city": "Ottawa",
+   "prov": "ON",
+   "type": "Reseller",
+   "cats": [
+    "electronics"
+   ],
+   "serves": "Canada-wide",
+   "about": "Business laptops, peripherals and point-of-sale hardware, configured and shipped in volume.",
+   "founded": 2013,
+   "caps": [
+    "Device imaging",
+    "Asset tagging",
+    "French keyboards"
+   ]
+  },
+  {
+   "id": "s6",
+   "name": "Prairie Solar Supply",
+   "city": "Calgary",
+   "prov": "AB",
+   "type": "Distributor",
+   "cats": [
+    "energy"
+   ],
+   "serves": "Western Canada",
+   "about": "Solar modules, inverters and racking for commercial and agricultural installations.",
+   "founded": 2015,
+   "caps": [
+    "System design support",
+    "Pallet freight",
+    "Farm projects"
+   ]
+  },
+  {
+   "id": "s7",
+   "name": "Coastal Fleet Parts",
+   "city": "Surrey",
+   "prov": "BC",
+   "type": "Distributor",
+   "cats": [
+    "transport"
+   ],
+   "serves": "British Columbia and Alberta",
+   "about": "Upfitting accessories, lighting and parts for commercial vans and light trucks.",
+   "founded": 2008,
+   "caps": [
+    "Installation",
+    "Fleet programs",
+    "Custom fitting"
+   ]
+  },
+  {
+   "id": "s8",
+   "name": "Northline Building Products",
+   "city": "Winnipeg",
+   "prov": "MB",
+   "type": "Manufacturer and distributor",
+   "cats": [
+    "building"
+   ],
+   "serves": "Manitoba and Saskatchewan",
+   "about": "Lumber, insulation and site materials for contractors and builders.",
+   "founded": 1998,
+   "caps": [
+    "Job-site delivery",
+    "Phased drops",
+    "Cut to length"
+   ]
+  },
+  {
+   "id": "s9",
+   "name": "Laurentian Packaging",
+   "city": "Laval",
+   "prov": "QC",
+   "type": "Manufacturer",
+   "cats": [
+    "packaging"
+   ],
+   "serves": "Quebec and Ontario",
+   "about": "Corrugated shipping boxes in standard sizes for distributors and e-commerce brands.",
+   "founded": 1994,
+   "caps": [
+    "Custom sizes",
+    "Printed boxes",
+    "Recycled board"
+   ]
+  },
+  {
+   "id": "s10",
+   "name": "Great Lakes Material Handling",
+   "city": "Burlington",
+   "prov": "ON",
+   "type": "Distributor",
+   "cats": [
+    "industrial"
+   ],
+   "serves": "Ontario",
+   "about": "Pallet jacks, carts and dock equipment for warehouses and distribution centres.",
+   "founded": 2006,
+   "caps": [
+    "Next-day Ontario delivery",
+    "Service and parts",
+    "Rentals"
+   ]
+  },
+  {
+   "id": "s11",
+   "name": "Prairie Lift & Supply",
+   "city": "Regina",
+   "prov": "SK",
+   "type": "Distributor",
+   "cats": [
+    "industrial"
+   ],
+   "serves": "Western Canada",
+   "about": "Material handling equipment and replacement parts for Prairie warehouses and farms.",
+   "founded": 2001,
+   "caps": [
+    "Farm delivery",
+    "Parts counter",
+    "Repairs"
+   ]
+  }
+ ],
+ "requests": [
+  {
+   "id": "RFQ-2041",
+   "title": "Corrugated shipping boxes, 12 × 10 × 8 in",
+   "cat": "packaging",
+   "qty": "2,000 boxes",
+   "city": "Mississauga",
+   "prov": "ON",
+   "due": "Nov 18",
+   "quotes": 6,
+   "posted": "2 hours ago"
+  },
+  {
+   "id": "RFQ-2040",
+   "title": "Rooftop solar panels, 400 W, with mounting hardware",
+   "cat": "energy",
+   "qty": "120 panels",
+   "city": "Calgary",
+   "prov": "AB",
+   "due": "Nov 24",
+   "quotes": 3,
+   "posted": "5 hours ago"
+  },
+  {
+   "id": "RFQ-2038",
+   "title": "Business laptops, 16 GB RAM, for a new office",
+   "cat": "electronics",
+   "qty": "45 units",
+   "city": "Vancouver",
+   "prov": "BC",
+   "due": "Nov 20",
+   "quotes": 8,
+   "posted": "Yesterday"
+  },
+  {
+   "id": "RFQ-2035",
+   "title": "Vented hard hats and high-visibility vests",
+   "cat": "industrial",
+   "qty": "300 sets",
+   "city": "Greater Sudbury",
+   "prov": "ON",
+   "due": "Nov 21",
+   "quotes": 2,
+   "posted": "Yesterday"
+  },
+  {
+   "id": "RFQ-2033",
+   "title": "Ergonomic office chairs, mesh back",
+   "cat": "office",
+   "qty": "80 chairs",
+   "city": "Montréal",
+   "prov": "QC",
+   "due": "Nov 27",
+   "quotes": 5,
+   "posted": "2 days ago"
+  },
+  {
+   "id": "RFQ-2030",
+   "title": "Mineral wool insulation batts, R-22",
+   "cat": "building",
+   "qty": "60 pallets",
+   "city": "Winnipeg",
+   "prov": "MB",
+   "due": "Dec 2",
+   "quotes": 1,
+   "posted": "2 days ago"
+  },
+  {
+   "id": "RFQ-2027",
+   "title": "Roof racks for a cargo van fleet",
+   "cat": "transport",
+   "qty": "14 vans",
+   "city": "Surrey",
+   "prov": "BC",
+   "due": "Nov 29",
+   "quotes": 4,
+   "posted": "3 days ago"
+  },
+  {
+   "id": "RFQ-2025",
+   "title": "Shelf-stable snack assortment for 12 stores",
+   "cat": "retail",
+   "qty": "240 cases",
+   "city": "Halifax",
+   "prov": "NS",
+   "due": "Nov 26",
+   "quotes": 3,
+   "posted": "3 days ago"
+  },
+  {
+   "id": "RFQ-2022",
+   "title": "Manual pallet jacks, 5,500 lb capacity",
+   "cat": "industrial",
+   "qty": "4 units",
+   "city": "Mississauga",
+   "prov": "ON",
+   "due": "Nov 19",
+   "quotes": 3,
+   "posted": "4 days ago"
+  },
+  {
+   "id": "RFQ-2019",
+   "title": "Poly mailers, 10 × 13 in, printed logo",
+   "cat": "packaging",
+   "qty": "20,000 mailers",
+   "city": "Laval",
+   "prov": "QC",
+   "due": "Dec 1",
+   "quotes": 7,
+   "posted": "4 days ago"
+  }
+ ],
+ "faqs": [
+  [
+   "Is B2B Market free to join?",
+   "Yes. Registering is free for buyers and suppliers, and supplier profiles and product listings are free."
+  ],
+  [
+   "Do I need an account to browse?",
+   "No. You can browse products and suppliers without signing in. You’ll need a free account to send a quote request and track responses."
+  ],
+  [
+   "How does a quote request work?",
+   "Add products to your quote list or describe what you need, including quantity and delivery city. Matching suppliers respond with pricing, and you compare responses in one place."
+  ],
+  [
+   "Are the prices on listings final?",
+   "No. Listings show indicative price ranges and minimum orders so you know what to expect. Final pricing, delivery and terms come from each supplier’s quote."
+  ],
+  [
+   "Can I negotiate pricing?",
+   "Yes. You can discuss pricing, terms and delivery schedules directly with suppliers before you place an order."
+  ],
+  [
+   "How are suppliers reviewed?",
+   "Suppliers are reviewed for business registration and quality standards before they can list products."
+  ],
+  [
+   "Can my business buy and sell?",
+   "Yes. One account and one company profile let you source what you need and sell what you make."
+  ],
+  [
+   "Is financing available?",
+   "Not yet. Net payment terms are in development. Fees, limits and eligibility will be announced at launch. You can register interest to be notified."
+  ]
+ ],
+ "partners": [
+  [
+   "Just Vertical",
+   "just-vertical",
+   "Toronto",
+   "ON",
+   "https://justvertical.com"
+  ],
+  [
+   "Mosa Technologies",
+   "mosa-technologies",
+   "",
+   "",
+   "https://wearemosa.com"
+  ],
+  [
+   "PawzNDogz",
+   "pawzndogz",
+   "Acton",
+   "ON",
+   "https://pawzndogz.ca"
+  ],
+  [
+   "WG Corporate",
+   "wg-corporate",
+   "Brampton",
+   "ON",
+   "http://wgcorporate.com"
+  ],
+  [
+   "Quagga Designs",
+   "quagga-designs",
+   "St. Catharines",
+   "ON",
+   "https://www.quaggadesigns.com"
+  ],
+  [
+   "Numove Group",
+   "numove-group",
+   "Montréal",
+   "QC",
+   "https://numovegroup.com"
+  ],
+  [
+   "Voltsafe",
+   "voltsafe",
+   "Vancouver",
+   "BC",
+   "http://www.voltsafe.com"
+  ],
+  [
+   "Inkas",
+   "inkas",
+   "Toronto",
+   "ON",
+   "http://www.inkas.ca"
+  ],
+  [
+   "FortisBC",
+   "fortis-bc",
+   "Surrey",
+   "BC",
+   "https://www.fortisbc.com"
+  ],
+  [
+   "BRC Group",
+   "brc-group",
+   "Georgetown",
+   "ON",
+   "http://www.brc.group"
+  ],
+  [
+   "Sleepwell Bedding",
+   "sleepwell-bedding",
+   "Winnipeg",
+   "MB",
+   "https://www.sleepwellbedding.ca"
+  ],
+  [
+   "Vistaprint",
+   "vista",
+   "",
+   "",
+   "http://www.vistaprint.com"
+  ],
+  [
+   "Fern Kids",
+   "fern-kids",
+   "Mapleton",
+   "ON",
+   "https://www.fernkids.com"
+  ],
+  [
+   "Eurocraft",
+   "eurocraft",
+   "Winnipeg",
+   "MB",
+   "https://www.eurocraft.mb.ca"
+  ],
+  [
+   "Streamline Control",
+   "streamline-control",
+   "Calgary",
+   "AB",
+   "https://www.streamlinecontrol.com"
+  ],
+  [
+   "Accusteel",
+   "accusteel",
+   "Acheson",
+   "AB",
+   "https://www.accusteel.ca"
+  ],
+  [
+   "Nordstark Inc.",
+   "nordstark",
+   "Calgary",
+   "AB",
+   "https://nordstarkinc.com"
+  ],
+  [
+   "Reliable Industrial Supply",
+   "reliable-industrial-supply",
+   "Greater Sudbury",
+   "ON",
+   "https://www.reliableclean.ca"
+  ],
+  [
+   "VyBuild",
+   "vybuild",
+   "Charlottetown",
+   "PE",
+   "https://vybuild.ca"
+  ],
+  [
+   "Novermont Trading",
+   "novermont-trading",
+   "",
+   "",
+   "https://novermonttrading.com"
+  ],
+  [
+   "Safety Alliance of BC",
+   "safety-alliance-of-bc",
+   "Chilliwack",
+   "BC",
+   "http://safetyalliancebc.ca"
+  ]
+ ],
+ "popular": [
+  "Solar panels",
+  "Corrugated boxes",
+  "Laptops",
+  "Pallet jack",
+  "Office chairs",
+  "POS terminal",
+  "Insulation",
+  "Stretch wrap"
+ ],
+ "provs": {
+  "ON": "Ontario",
+  "QC": "Quebec",
+  "BC": "British Columbia",
+  "AB": "Alberta",
+  "MB": "Manitoba",
+  "SK": "Saskatchewan",
+  "NS": "Nova Scotia",
+  "NB": "New Brunswick",
+  "NL": "Newfoundland and Labrador",
+  "PE": "Prince Edward Island",
+  "YT": "Yukon",
+  "NT": "Northwest Territories",
+  "NU": "Nunavut"
+ },
+ "cities": {
+  "Toronto": "ON",
+  "Mississauga": "ON",
+  "Brampton": "ON",
+  "Ottawa": "ON",
+  "Hamilton": "ON",
+  "London": "ON",
+  "Markham": "ON",
+  "Vaughan": "ON",
+  "Kitchener": "ON",
+  "Windsor": "ON",
+  "Burlington": "ON",
+  "Oakville": "ON",
+  "Sudbury": "ON",
+  "Montreal": "QC",
+  "Montréal": "QC",
+  "Laval": "QC",
+  "Quebec City": "QC",
+  "Gatineau": "QC",
+  "Vancouver": "BC",
+  "Surrey": "BC",
+  "Burnaby": "BC",
+  "Victoria": "BC",
+  "Kelowna": "BC",
+  "Calgary": "AB",
+  "Edmonton": "AB",
+  "Red Deer": "AB",
+  "Winnipeg": "MB",
+  "Brandon": "MB",
+  "Regina": "SK",
+  "Saskatoon": "SK",
+  "Halifax": "NS",
+  "Moncton": "NB",
+  "Saint John": "NB",
+  "Fredericton": "NB",
+  "St. John's": "NL",
+  "Charlottetown": "PE",
+  "Whitehorse": "YT",
+  "Yellowknife": "NT",
+  "Iqaluit": "NU"
+ },
+ "articles": [
+  [
+   "Beyond the Tariff Rate: What Canadian Importers Need to Know as U.S.–Canada Trade Rules Shift",
+   "https://canadiansme.ca/beyond-the-tariff-rate-what-canadian-importers-need-to-know-as-u-s-canada-trade-rules-shift/",
+   "Trade"
+  ],
+  [
+   "From Small to Scalable: Real Life Owners Share Essential Steps for Business Growth",
+   "https://canadiansme.ca/from-small-to-scalable-real-life-owners-share-essential-steps-for-business-growth/",
+   "Growth"
+  ],
+  [
+   "Making Cross-Border Money Work Harder for Canadian SMEs",
+   "https://canadiansme.ca/making-cross-border-money-work-harder-for-canadian-smes/",
+   "Interview"
+  ]
+ ],
+ "quotes": [
+  {
+   "sup": "s4",
+   "unit": 452,
+   "ship": null,
+   "lead": "7–10 business days",
+   "terms": "Net 30",
+   "flag": ""
+  },
+  {
+   "sup": "s10",
+   "unit": 489,
+   "ship": 120,
+   "lead": "3–5 business days",
+   "terms": "Due on receipt",
+   "flag": ""
+  },
+  {
+   "sup": "s11",
+   "unit": 415,
+   "ship": 310,
+   "lead": "2–3 weeks",
+   "terms": "Not stated",
+   "flag": "Rated 5,000 lb, below the 5,500 lb you asked for"
+  }
+ ],
+ "slots": 10
+}

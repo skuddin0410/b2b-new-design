@@ -1,0 +1,34 @@
+<!-- {"title":"Net 30, 60 and 90 payment terms","desc":"Net payment terms for business purchases on B2B Market. Coming soon: receive inventory now and pay later.","page":"terms","nav":""} -->
+<section class="phero phero-buy">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / Net terms</nav>
+    <p style="margin-top:22px"><span class="badge badge-soon">Coming soon. Not yet available.</span></p>
+    <h1 class="ruled" style="margin-top:12px">Buy now. Pay in 30, 60 or 90 days.</h1>
+    <p class="lead">Net payment terms will let you receive inventory now and pay when your own customers pay you.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <h2 class="ruled">Terms that fit your cash cycle</h2>
+      <ul class="ticks" style="margin-top:22px">
+        <li>{{ic:check ic-s}}<span><b>Stock up without tying up cash.</b> Choose the window that matches how your money comes in.</span></li>
+        <li>{{ic:check ic-s}}<span><b>Suppliers are paid up front.</b> They ship without waiting on your invoice.</span></li>
+        <li>{{ic:check ic-s}}<span><b>One statement.</b> All your orders on net terms, with due dates in one place.</span></li>
+      </ul>
+      <p class="note">Fees, limits, eligibility and terms have not been announced. They will be published at launch.</p>
+      <p style="margin-top:22px"><a class="btn btn-buy" href="https://www.b2bmarket.ca/financing/">Register your interest</a></p>
+    </div>
+    <form class="panel planner" id="planner">
+      <h3>Payment timing planner</h3>
+      <label class="form">Order total in CAD<input class="input" id="plAmt" type="text" inputmode="numeric" value="12,500"></label>
+      <fieldset class="checks" style="display:flex;gap:8px;flex-wrap:wrap"><legend class="label">Payment term</legend>
+        <label class="tab"><input class="sr" type="radio" name="term" value="30">Net 30</label>
+        <label class="tab"><input class="sr" type="radio" name="term" value="60" checked>Net 60</label>
+        <label class="tab"><input class="sr" type="radio" name="term" value="90">Net 90</label></fieldset>
+      <div aria-live="polite"><span class="small muted">Order today and pay by</span><output id="plDate"></output><p class="small" id="plText" style="margin-top:6px"></p></div>
+      <p class="tiny muted">Planning tool only.</p>
+    </form>
+  </div>
+</section>
+<section class="section-s section-alt"><div class="wrap" style="max-width:860px"><h2 style="margin-bottom:10px">Questions</h2><div class="faq"><details><summary>Is financing available today?</summary><p>Not yet. Net payment terms are in development. Fees, limits and eligibility will be announced at launch. You can register interest to be notified.</p></details><details><summary>Who will be eligible?</summary><p>Eligibility has not been announced. It will be published with the launch terms.</p></details><details><summary>Do suppliers have to wait to be paid?</summary><p>The plan is for suppliers to be paid up front while the buyer pays later. The final terms will be confirmed at launch.</p></details></div></div></section>

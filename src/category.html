@@ -1,0 +1,57 @@
+<section class="phero">
+  <div class="bg"><img src="https://www.b2bmarket.ca/images/{{img}}.webp" alt=""></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <a href="categories.html">Categories</a> / {{name}}</nav>
+    <h1 class="ruled">{{name}}</h1>
+    <p class="lead">{{intro}}</p>
+    <div class="kpis"><div><b>{{products}}</b><span>products</span></div><div><b>{{vendors}}</b><span>vendors</span></div><div><b>CAD</b><span>pricing on every listing</span></div></div>
+    <div class="row"><a class="btn btn-buy" href="post-request.html?cat={{id}}">Request a quote in {{name}}</a><a class="btn btn-glass" href="#suppliers">See suppliers</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap cols">
+    <div>
+      <div class="tabs" id="subChips" role="group" aria-label="Filter by type" style="margin-bottom:20px"></div>
+      <div class="toolbar"><strong id="catCount" style="color:var(--ink)" aria-live="polite"></strong>
+        <label class="row small">Sort by <select id="catSort"><option value="match">Best match</option><option value="low">Price, low to high</option><option value="fast">Fastest to ship</option><option value="moq">Lowest minimum order</option></select></label></div>
+      <div class="grid-p" id="catGrid"></div>
+      <p class="note">Sample listings while supplier inventory is onboarded. Prices are indicative until a supplier quotes.</p>
+    </div>
+    <aside class="aside-sticky">
+      <div class="insight">
+        <h3>{{ic:spark}}Get better quotes for {{lower}}</h3>
+        <p class="small">Suppliers quote faster and closer when your request includes:</p>
+        <ul class="tell">{{tell}}</ul>
+        <form id="catNeed" class="stack" style="gap:8px">
+          <label class="sr" for="catNeedText">What do you need?</label>
+          <input class="input" id="catNeedText" type="text" placeholder="What do you need?">
+          <button class="btn btn-buy btn-block" type="submit">Start my request</button>
+        </form>
+      </div>
+      <div class="panel card" style="border-top:5px solid var(--red)">
+        <h3>Sell {{lower}}?</h3>
+        <p class="small" style="margin-top:6px">List your catalogue free and quote on requests in this category.</p>
+        <a class="btn btn-sell btn-block btn-s" style="margin-top:14px" href="{{REGISTER}}">Register as a supplier</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-alt" id="suppliers">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Suppliers in {{name}}</h2><p>Sample supplier profiles. Each one shows where it is based and where it delivers.</p></div><a class="link" href="suppliers.html?cat={{id}}">Open the supplier directory {{ic:arrow ic-s}}</a></div>
+    <div class="grid-s" id="catSups"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Open buying requests in {{name}}</h2><p>Suppliers: these buyers are waiting for quotes.</p></div><a class="link" href="requests.html?cat={{id}}">See all requests {{ic:arrow ic-s}}</a></div>
+    <div class="req-list" id="catReqs"></div>
+  </div>
+</section>
+
+<section class="section-s section-alt">
+  <div class="wrap"><h2 style="font-size:20px;margin-bottom:14px">Other categories</h2><div class="tabs" id="otherCats"></div></div>
+</section>

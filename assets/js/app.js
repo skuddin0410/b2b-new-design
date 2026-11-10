@@ -1,439 +1,454 @@
-/* B2B Market front-end prototype.
-   Real data (from b2bmarket.ca): CATS counts, COMPANIES, PROVINCE_COUNTS, contact details.
-   Sample data: PRODUCTS, SUPPLIERS, REQUESTS, business dashboard. Replace with API calls. */
+/* B2B Market front-end prototype. Data comes from assets/js/data.js (built from src/data.json).
+   Real: category counts, onboarded companies, contact details. Sample: products, suppliers, requests. */
 (function () {
   'use strict';
-
+  var D = window.B2B, PORTAL = 'https://portal.b2bmarket.ca/login';
   var IMG = function (n) { return 'https://www.b2bmarket.ca/images/' + n + '.webp'; };
-  var PORTAL = 'https://portal.b2bmarket.ca/login';
-
-  var CATS = [
-    { id: 'electronics', name: 'Electronics', img: 1, icon: 'chip', products: '1,200+', vendors: '30+' },
-    { id: 'industrial', name: 'Industrial Equipment', img: 2, icon: 'gear', products: '850+', vendors: '51+' },
-    { id: 'office', name: 'Office Supplies', img: 3, icon: 'clip', products: '2,500+', vendors: '29+' },
-    { id: 'transport', name: 'Transportation', img: 4, icon: 'truck', products: '320+', vendors: '49+' },
-    { id: 'building', name: 'Building Materials', img: 5, icon: 'brick', products: '1,800+', vendors: '47+' },
-    { id: 'energy', name: 'Energy Solutions', img: 6, icon: 'sun', products: '450+', vendors: '11+' },
-    { id: 'retail', name: 'Retail Products', img: 7, icon: 'bag', products: '3,200+', vendors: '40+' },
-    { id: 'packaging', name: 'Packaging', img: 8, icon: 'box', products: '1,100+', vendors: '55+' }
-  ];
-
-  var PRODUCTS = [
-    { id: 'p1', cat: 'packaging', sub: 'Corrugated boxes', name: 'Corrugated Shipping Boxes, 12 x 10 x 8 in (bundle of 250)', lo: 178, hi: 214, unit: 'bundle', moq: 5, lead: 4, sup: 's1', img: 8 },
-    { id: 'p2', cat: 'office', sub: 'Paper and printing', name: 'Multipurpose Copy Paper, 8.5 x 11, 5,000 sheets', lo: 41, hi: 52, unit: 'case', moq: 20, lead: 3, sup: 's2', img: 3 },
-    { id: 'p3', cat: 'retail', sub: 'Grocery wholesale', name: 'Shelf-Stable Pantry Assortment, Mixed Case (48 ct)', lo: 96, hi: 118, unit: 'case', moq: 10, lead: 5, sup: 's3', img: 7 },
-    { id: 'p4', cat: 'packaging', sub: 'Mailers', name: 'Poly Mailers, 10 x 13, Self-Seal (case of 1,000)', lo: 64, hi: 82, unit: 'case', moq: 10, lead: 3, sup: 's1', img: 8 },
-    { id: 'p5', cat: 'office', sub: 'Stationery', name: 'Stationery Starter Bundle for 25 Staff', lo: 212, hi: 245, unit: 'bundle', moq: 2, lead: 4, sup: 's2', img: 3 },
-    { id: 'p6', cat: 'industrial', sub: 'Safety equipment', name: 'Vented Hard Hats (box of 20)', lo: 148, hi: 176, unit: 'box', moq: 10, lead: 6, sup: 's4', img: 2 },
-    { id: 'p7', cat: 'packaging', sub: 'Labels', name: 'Thermal Shipping Labels, 4 x 6 (24 rolls)', lo: 88, hi: 109, unit: 'carton', moq: 5, lead: 2, sup: 's1', img: 8 },
-    { id: 'p8', cat: 'electronics', sub: 'Laptops and computers', name: '15.6 in Business Laptop, Core i5, 16GB / 512GB', lo: 689, hi: 749, unit: 'unit', moq: 10, lead: 7, sup: 's5', img: 1 }
-  ];
-
-  var SUPPLIERS = {
-    s1: { name: 'PackagePro', city: 'Mississauga', prov: 'ON' },
-    s2: { name: 'Office Essentials', city: 'Laval', prov: 'QC' },
-    s3: { name: 'Maple Provisions', city: 'Toronto', prov: 'ON' },
-    s4: { name: 'SafeSite Supply', city: 'Hamilton', prov: 'ON' },
-    s5: { name: 'TechSupply Canada', city: 'Markham', prov: 'ON' }
-  };
-
-  // Companies listed as onboarded on b2bmarket.ca
-  var COMPANIES = [
-    ['Just Vertical', 'Toronto', 'ON', 'https://justvertical.com/'],
-    ['Mosa Technologies', '', '', 'https://wearemosa.com/'],
-    ['PawzNDogz', 'Acton', 'ON', 'https://pawzndogz.ca/'],
-    ['WG Corporate', 'Brampton', 'ON', 'http://wgcorporate.com/'],
-    ['Quagga Designs', 'St. Catharines', 'ON', 'https://www.quaggadesigns.com/'],
-    ['Numove Group', 'Montreal', 'QC', 'https://numovegroup.com/'],
-    ['Voltsafe', 'Vancouver', 'BC', 'http://www.voltsafe.com/'],
-    ['Inkas', 'Toronto', 'ON', 'http://www.inkas.ca/'],
-    ['FortisBC', 'Surrey', 'BC', 'https://www.fortisbc.com/'],
-    ['BRC Group', 'Georgetown', 'ON', 'http://www.brc.group/'],
-    ['Sleepwell Bedding', 'Winnipeg', 'MB', 'https://www.sleepwellbedding.ca/'],
-    ['Vistaprint', '', '', 'http://www.vistaprint.com/'],
-    ['Fern Kids', 'Mapleton', 'ON', 'https://www.fernkids.com/'],
-    ['Eurocraft', 'Winnipeg', 'MB', 'https://www.eurocraft.mb.ca/'],
-    ['Streamline Control', 'Calgary', 'AB', 'https://www.streamlinecontrol.com/'],
-    ['Accusteel', 'Acheson', 'AB', 'https://www.accusteel.ca/'],
-    ['Nordstark Inc.', 'Calgary', 'AB', 'https://nordstarkinc.com/'],
-    ['Reliable Industrial Supply', 'Greater Sudbury', 'ON', 'https://www.reliableclean.ca/'],
-    ['VyBuild', 'Charlottetown', 'PE', 'https://vybuild.ca/'],
-    ['Novermont Trading', '', '', 'https://novermonttrading.com/'],
-    ['Safety Alliance of BC', 'Chilliwack', 'BC', 'http://safetyalliancebc.ca/']
-  ];
-  var PROV_NAMES = { ON: 'Ontario', BC: 'British Columbia', AB: 'Alberta', MB: 'Manitoba', QC: 'Quebec', PE: 'Prince Edward Island', NS: 'Nova Scotia', SK: 'Saskatchewan' };
-
-  var REQUESTS = [
-    { id: 'RFQ-2041', title: 'Corrugated shipping boxes, 12 x 10 x 8 in', cat: 'packaging', qty: '2,000 boxes', city: 'Mississauga', prov: 'ON', due: 'Nov 18', quotes: 6, posted: '2 hours ago' },
-    { id: 'RFQ-2040', title: 'Rooftop solar panels, 400 W, with mounting hardware', cat: 'energy', qty: '120 panels', city: 'Calgary', prov: 'AB', due: 'Nov 24', quotes: 3, posted: '5 hours ago' },
-    { id: 'RFQ-2038', title: 'Business laptops, 16GB RAM, for a new office', cat: 'electronics', qty: '45 units', city: 'Vancouver', prov: 'BC', due: 'Nov 20', quotes: 8, posted: 'Yesterday' },
-    { id: 'RFQ-2035', title: 'Vented hard hats and high-visibility vests', cat: 'industrial', qty: '300 sets', city: 'Greater Sudbury', prov: 'ON', due: 'Nov 21', quotes: 2, posted: 'Yesterday' },
-    { id: 'RFQ-2033', title: 'Ergonomic office chairs, mesh back', cat: 'office', qty: '80 chairs', city: 'Montreal', prov: 'QC', due: 'Nov 27', quotes: 5, posted: '2 days ago' },
-    { id: 'RFQ-2030', title: 'Mineral wool insulation batts, R-22', cat: 'building', qty: '60 pallets', city: 'Winnipeg', prov: 'MB', due: 'Dec 2', quotes: 1, posted: '2 days ago' },
-    { id: 'RFQ-2027', title: 'Electric pallet jacks, 4,500 lb capacity', cat: 'transport', qty: '6 units', city: 'Halifax', prov: 'NS', due: 'Nov 29', quotes: 4, posted: '3 days ago' }
-  ];
-  var QUOTE_SLOTS = 10;
-
-  /* ---------- helpers ---------- */
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
-  var money = function (n) { return '$' + Number(n).toLocaleString('en-CA', { maximumFractionDigits: 0 }); };
+  var money = function (n) { return '$' + Math.round(n).toLocaleString('en-CA'); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-  var ic = function (n, cls) { return '<svg class="ic ' + (cls || '') + '" aria-hidden="true"><use href="#i-' + n + '"/></svg>'; };
-  var cat = function (id) { return CATS.filter(function (c) { return c.id === id; })[0]; };
-  var product = function (id) { return PRODUCTS.filter(function (p) { return p.id === id; })[0]; };
-  var plural = function (u, n) { return n === 1 ? u : (u === 'box' ? 'boxes' : u + 's'); };
+  var ic = function (n, c) { return '<svg class="ic ' + (c || '') + '" aria-hidden="true"><use href="#i-' + n + '"/></svg>'; };
+  var by = function (list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; };
+  var cat = function (id) { return by(D.cats, id); }, sup = function (id) { return by(D.suppliers, id); }, prod = function (id) { return by(D.products, id); };
+  var param = function (k) { return new URLSearchParams(location.search).get(k); };
+  var initials = function (n) { return n.split(/\s+/).slice(0, 2).map(function (w) { return w[0]; }).join('').toUpperCase(); };
   var store = {
     get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage unavailable */ } }
   };
+  var page = document.body.dataset.page;
 
-  // Quantity breaks: list price at the minimum order, falling to the low end of the range at 5x.
+  /* ---------- pricing ---------- */
   function tiers(p) {
-    var mid = Math.round((p.lo + p.hi) / 2);
-    return [
-      { from: p.moq, to: p.moq * 2 - 1, price: p.hi },
-      { from: p.moq * 2, to: p.moq * 5 - 1, price: mid },
-      { from: p.moq * 5, to: null, price: p.lo }
-    ];
+    if (p.min == null) return null;
+    var mid = Math.round((p.min + p.max) / 2), a = p.moq, b = Math.max(p.moq * 2, p.moq + 1), c = Math.max(p.moq * 5, b + 1);
+    return [{ from: a, to: b - 1, price: p.max }, { from: b, to: c - 1, price: mid }, { from: c, to: null, price: p.min }];
   }
-  function tierFor(p, qty) {
-    var t = tiers(p), i = 0;
-    for (var k = 0; k < t.length; k++) { if (qty >= t[k].from) i = k; }
-    return i;
-  }
+  function tierFor(p, q) { var t = tiers(p), i = 0; t.forEach(function (x, k) { if (q >= x.from) i = k; }); return i; }
   function ladder(p, active, large) {
-    return '<div class="ladder' + (large ? ' ladder-lg' : '') + '" role="group" aria-label="Price by quantity">' + tiers(p).map(function (t, i) {
-      var q = (t.to ? t.from + '–' + t.to : t.from + '+') + (large ? ' ' + plural(p.unit, 2) : '');
-      return '<div' + (i === active ? ' class="on"' : '') + '><span class="q">' + q + '</span><span class="p">' + money(t.price) + '</span></div>';
+    var t = tiers(p);
+    if (!t) return '<div class="onreq"><b>Price on request</b><br>Depends on configuration and quantity.</div>';
+    return '<div class="ladder' + (large ? ' ladder-lg' : '') + '" role="group" aria-label="Price by quantity">' + t.map(function (x, i) {
+      var q = (x.to == null ? x.from + '+' : x.to === x.from ? x.from : x.from + '–' + x.to) + (large ? ' ' + p.units : '');
+      return '<div' + (i === active ? ' class="on"' : '') + '><span class="q">' + q + '</span><span class="p">' + money(x.price) + '</span></div>';
     }).join('') + '</div>';
   }
 
-  /* ---------- shared chrome ---------- */
-  var ICONS = {
-    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
-    camera: '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
-    user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
-    chat: '<path d="M4 5h16v11H9l-5 4z"/>',
-    heart: '<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',
-    list: '<path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/>',
-    check: '<path d="m5 12.5 4.5 4.5L19 7"/>',
-    shield: '<path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z"/><path d="m9 12 2.2 2.2L15 10.5"/>',
-    clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
-    calendar: '<rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3v4M15.5 3v4"/>',
-    headset: '<path d="M5 14v-2a7 7 0 0 1 14 0v2"/><rect x="3.5" y="13" width="4" height="6" rx="1.5"/><rect x="16.5" y="13" width="4" height="6" rx="1.5"/>',
-    leaf: '<path d="M12 3l2 4 3-1-1 4 3 1-4 3 1 3-4-1v4-4l-4 1 1-3-4-3 3-1-1-4 3 1z"/>',
-    chip: '<rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/>',
-    gear: '<path d="M3 20V10l6 4v-4l6 4V5h4v15z"/><path d="M7 17h2M12 17h2"/>',
-    clip: '<path d="M8 12.5 14.5 6a3 3 0 0 1 4.2 4.2l-8 8a4.5 4.5 0 0 1-6.4-6.4L11 5"/>',
-    truck: '<path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/>',
-    brick: '<path d="M3 6h18v12H3zM3 12h18M9 6v6M15 12v6"/>',
-    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"/>',
-    bag: '<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
-    box: '<path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/>',
-    users: '<circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 20c1-3.5 3.5-5.5 6.5-5.5s5.5 2 6.5 5.5M16 5.5a3.5 3.5 0 0 1 0 6.5M18 14.8c1.8.7 3 2.5 3.5 5.2"/>',
-    flow: '<rect x="3" y="4" width="7" height="5" rx="1"/><rect x="14" y="15" width="7" height="5" rx="1"/><path d="M6.5 9v4.5a2 2 0 0 0 2 2H14"/>',
-    doc: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
-    chart: '<path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-7"/>',
-    repeat: '<path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"/>',
-    percent: '<path d="M6 18 18 6"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/>',
-    spark: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>',
-    pin: '<path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',
-    home: '<path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/>'
-  };
-
-  function sprite() {
-    var s = '<svg xmlns="http://www.w3.org/2000/svg" style="display:none">';
-    Object.keys(ICONS).forEach(function (k) { s += '<symbol id="i-' + k + '" viewBox="0 0 24 24">' + ICONS[k] + '</symbol>'; });
-    return s + '</svg>';
+  /* ---------- cards ---------- */
+  var quote = store.get('b2b.quote', []), saved = store.get('b2b.saved', []), compare = [];
+  function card(p) {
+    var s = sup(p.sup), c = cat(p.cat);
+    return '<article class="pcard"><a class="pimg" href="product.html?id=' + p.id + '"><img loading="lazy" src="' + IMG(p.img) + '" alt=""><span class="badge">Sample listing</span></a>' +
+      '<button class="save" type="button" data-save="' + p.id + '" aria-pressed="' + (saved.indexOf(p.id) >= 0) + '" aria-label="Save ' + esc(p.name) + '">' + ic('heart') + '</button>' +
+      '<div class="pbody"><span class="cat"><a class="muted" href="' + c.slug + '.html">' + c.name + '</a> / ' + p.sub + '</span>' +
+      '<h3><a href="product.html?id=' + p.id + '">' + esc(p.name) + '</a></h3>' + ladder(p, -1) +
+      '<div class="pmeta">' + (p.min != null ? '<span>Per <b>' + p.unit + '</b></span>' : '') + '<span>Min. <b>' + p.moq + ' ' + (p.moq === 1 ? p.unit : p.units) + '</b></span><span>Ships in <b>' + p.lead.replace(' business', '') + '</b></span></div>' +
+      '<div class="psup">' + ic('leaf', 'ic-s') + '<a href="supplier.html?id=' + s.id + '">' + esc(s.name) + '</a><span class="muted">' + s.city + ', ' + s.prov + '</span></div>' +
+      '<div class="pact"><button class="btn btn-line btn-s" type="button" data-quote="' + p.id + '">Add to quote list</button>' +
+      '<label class="cmp"><input type="checkbox" data-compare="' + p.id + '"' + (compare.indexOf(p.id) >= 0 ? ' checked' : '') + '>Compare</label></div></div></article>';
+  }
+  function reqRow(r) {
+    var left = D.slots - r.quotes, c = cat(r.cat);
+    return '<article class="req panel"><div><div class="row"><a class="badge badge-blue" href="' + c.slug + '.html">' + c.name + '</a><span class="badge">Sample request</span></div>' +
+      '<h3>' + esc(r.title) + '</h3><div class="facts"><span>Quantity <b>' + r.qty + '</b></span><span>Deliver to <b>' + r.city + ', ' + r.prov + '</b></span><span>Respond by <b>' + r.due + '</b></span><span>' + r.id + ', posted ' + r.posted.toLowerCase() + '</span></div></div>' +
+      '<div class="slots"><b>' + left + ' of ' + D.slots + '</b> quote slots left<div class="meter" role="img" aria-label="' + r.quotes + ' quotes received"><i style="width:' + r.quotes * 10 + '%"></i></div></div>' +
+      '<a class="btn btn-sell btn-s" href="' + PORTAL + '">Send a quote</a></article>';
+  }
+  function supCard(s) {
+    var n = D.products.filter(function (p) { return p.sup === s.id; }).length;
+    return '<article class="scard panel"><div class="sup-head"><span class="avatar">' + initials(s.name) + '</span><div><strong><a href="supplier.html?id=' + s.id + '">' + esc(s.name) + '</a></strong><span class="small muted">' + s.city + ', ' + D.provs[s.prov] + '</span></div></div>' +
+      '<p class="small">' + esc(s.about) + '</p>' +
+      '<div class="taglist"><span class="tag">' + s.type + '</span>' + s.cats.map(function (c) { return '<span class="tag">' + cat(c).name + '</span>'; }).join('') + '<span class="tag">Serves ' + s.serves + '</span></div>' +
+      '<div class="row" style="justify-content:space-between"><span class="small muted">' + n + (n === 1 ? ' listing' : ' listings') + ' · Sample supplier</span><a class="btn btn-line btn-s" href="supplier.html?id=' + s.id + '">View storefront</a></div></article>';
+  }
+  function empty(title, text, catId) {
+    return '<div class="empty"><h3>' + title + '</h3><p class="muted">' + text + '</p><div class="row"><a class="btn btn-buy btn-s" href="post-request.html' + (catId ? '?cat=' + catId : '') + '">Post a request</a></div></div>';
   }
 
-  function header() {
-    var page = document.body.dataset.page || '';
-    var cur = function (p) { return p === page ? ' aria-current="page"' : ''; };
-    return sprite() +
-      '<a class="sr" href="#main">Skip to content</a>' +
-      '<div class="util"><div class="wrap"><span>Delivering across Canada. Prices in CAD.</span>' +
-      '<div class="util-links"><a href="supplier.html">Sell on B2B Market</a><a href="https://www.b2bmarket.ca/help/">Help</a><a href="https://www.b2bmarket.ca/contact/">Contact</a><a href="https://canadiansme.ca/">Backed by CanadianSME</a></div></div></div>' +
-      '<header class="site-head"><div class="wrap head-main">' +
-      '<a class="logo" href="index.html" aria-label="B2B Market home"><img src="assets/img/logo.png" alt="B2B Market, Simplifying B2B Trade" width="182" height="44"></a>' +
-      '<form class="search" role="search" action="index.html#ready">' +
-      '<label class="sr" for="scope">Search in</label><select id="scope"><option>Products</option><option>Suppliers</option><option>Buying requests</option></select>' +
-      '<label class="sr" for="q">Search</label><input id="q" type="search" placeholder="Search products, suppliers or requests">' +
-      '<button class="icon-btn" type="button" data-toast="Search by photo is a planned feature. Upload a product photo to find matching listings." aria-label="Search by photo">' + ic('camera') + '</button>' +
-      '<button class="go" type="submit">' + ic('search') + '<span>Search</span></button></form>' +
-      '<div class="head-actions">' +
-      '<a class="act" href="' + PORTAL + '">' + ic('user') + '<span class="l">Sign in</span></a>' +
-      '<a class="act" href="business.html">' + ic('chat') + '<span class="l">Messages</span></a>' +
-      '<a class="act" href="index.html#ready">' + ic('heart') + '<span class="l">Saved</span><span class="count" id="savedCount" hidden>0</span></a>' +
-      '<a class="act" href="requests.html#post">' + ic('list') + '<span class="l">Quote list</span><span class="count" id="quoteCount" hidden>0</span></a>' +
-      '<a class="btn btn-primary" href="requests.html#post">Post a request</a></div></div>' +
-      '<nav class="nav" aria-label="Main"><div class="wrap">' +
-      '<a href="index.html#categories">' + ic('list', 'ic-s') + 'All categories</a>' +
-      '<a href="index.html#ready"' + cur('home') + '>Ready to ship</a>' +
-      '<a href="supplier.html"' + cur('supplier') + '>Verified suppliers</a>' +
-      '<a href="requests.html"' + cur('requests') + '>Buying requests</a>' +
-      '<a href="business.html"' + cur('business') + '>Business accounts</a>' +
-      '<a href="index.html#protection">Order Protection <span class="soon">Soon</span></a>' +
-      '<a href="index.html#terms">Net terms <span class="soon">Soon</span></a>' +
-      '<a href="index.html#companies">Made in Canada</a>' +
-      '</div></nav></header>';
+  /* ---------- understanding a plain-language request ---------- */
+  var NOT_QTY = /^(x|×|in|inch|inches|w|kw|lb|lbs|gb|tb|ft|mil|v|ct|mm|cm|gauge|ect|%)$/i;
+  function parseNeed(text) {
+    var out = { qty: null, noun: '', city: '', prov: '', when: '', cat: null, matches: [] }, t = ' ' + text + ' ', m;
+    var re = /(^|[^\w.×-])(\d[\d,]*)(?:\s*([a-zA-Z×%]+))?(?:\s+([a-zA-Z]+))?/g;
+    while ((m = re.exec(t))) {
+      var word = m[3] || '', n = parseInt(m[2].replace(/,/g, ''), 10);
+      var before = t.slice(Math.max(0, m.index - 3), m.index + 1);
+      if (NOT_QTY.test(word) || /[x×]\s*$/i.test(before) || /R-$/i.test(before) || n === 0) continue;
+      if (/^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i.test(word) || /(by|on|before)\s+\w+\s*$/i.test(t.slice(0, m.index + 1)) && n <= 31) continue;
+      // "2,000 shipping boxes": the thing being counted is the plural word, not the adjective before it.
+      var second = (m[4] || '').toLowerCase(); word = word.toLowerCase();
+      out.qty = n; out.noun = second && /s$/.test(second) && !/s$/.test(word) && !/^(to|for|in|by|at|of|and|with|delivered)$/.test(word) ? second : (/^(to|for|in|by|at|of|and|with|delivered)$/.test(word) ? '' : word); break;
+    }
+    Object.keys(D.cities).some(function (c) { if (new RegExp('\\b' + c.replace('.', '\\.') + '\\b', 'i').test(text)) { out.city = c; out.prov = D.cities[c]; return true; } });
+    m = text.match(/\b(asap|next week|next month|this month|this week|in \d+ (?:days?|weeks?)|by (?:the end of )?(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?(?: \d{1,2})?)\b/i);
+    if (m) out.when = m[0];
+    var words = text.toLowerCase().match(/[a-zà-ÿ]+/g) || [], best = 0;
+    D.cats.forEach(function (c) { var s = words.filter(function (w) { return c.words.indexOf(w) >= 0; }).length; if (s > best) { best = s; out.cat = c; } });
+    var stop = ['the', 'and', 'for', 'with', 'need', 'want', 'new', 'our', 'delivered', 'delivery', 'next', 'month', 'week', 'units'];
+    var keys = words.filter(function (w) { return w.length > 2 && stop.indexOf(w) < 0; });
+    out.matches = D.products.map(function (p) {
+      var hay = (p.name + ' ' + p.sub + ' ' + p.desc).toLowerCase(), s = 0;
+      keys.forEach(function (w) { var stem = w.replace(/(es|s)$/, ''); if (stem.length > 2 && hay.indexOf(stem) >= 0) s += p.name.toLowerCase().indexOf(stem) >= 0 ? 2 : 1; });
+      if (out.cat && p.cat === out.cat.id) s += 1;
+      return { p: p, s: s };
+    }).filter(function (x) { return x.s >= 3; }).sort(function (a, b) { return b.s - a.s; }).slice(0, 3).map(function (x) { return x.p; });
+    if (!out.cat && out.matches.length) out.cat = cat(out.matches[0].cat);
+    return out;
+  }
+  // Turn "2,000 boxes" into selling units ("8 bundles of 250") and a price range.
+  function estimate(p, need) {
+    if (!need.qty || p.min == null) return '';
+    var stem = need.noun.replace(/(es|s)$/, '');
+    if (stem && p.name.toLowerCase().indexOf(stem) < 0 && stem !== p.unit) return '';
+    var pack = p.name.match(/\((?:bundle|case|box|unit) of ([\d,]+)\)/i), units = need.qty, note = '';
+    if (pack && need.noun && need.noun.replace(/(es|s)$/, '') !== p.unit) { var size = parseInt(pack[1].replace(/,/g, ''), 10); units = Math.ceil(need.qty / size); note = need.qty.toLocaleString('en-CA') + ' ' + need.noun + ' is about ' + units + ' ' + (units === 1 ? p.unit : p.units) + '. '; }
+    var t = tiers(p), i = tierFor(p, units);
+    return note + (units < p.moq ? 'Below the minimum order of ' + p.moq + ' ' + p.units + '.' : 'Estimate ' + money(units * p.min) + ' to ' + money(units * t[i].price) + ', before tax and delivery.');
   }
 
-  function footer() {
-    return '<footer class="foot"><div class="wrap"><div class="foot-grid">' +
-      '<div><img src="assets/img/logo-white.png" alt="B2B Market" width="182" height="44"><p>Connecting Canadian buyers and suppliers in one marketplace.</p>' +
-      '<p style="margin-top:12px">6345 Dixie Rd, Unit 202<br>Mississauga, ON L5T 1M9</p><a href="mailto:info@b2bmarket.ca">info@b2bmarket.ca</a><a href="tel:+14377784446">+1 437 778 4446</a><p class="tiny">Monday to Friday, 9 a.m. to 6 p.m. ET</p></div>' +
-      '<div><h2>Buy</h2><a href="index.html#categories">Browse categories</a><a href="index.html#ready">Ready to ship</a><a href="requests.html#post">Post a request</a><a href="business.html">Business accounts</a><a href="https://www.b2bmarket.ca/buyer-hub/">Buyer Hub</a></div>' +
-      '<div><h2>Sell</h2><a href="https://www.b2bmarket.ca/register/">Register as a supplier</a><a href="requests.html">Open buying requests</a><a href="supplier.html">Storefront example</a><a href="https://www.b2bmarket.ca/vendor-hub/">Vendor Hub</a></div>' +
-      '<div><h2>Trust</h2><a href="index.html#protection">Order Protection</a><a href="supplier.html#verification">How verification works</a><a href="https://www.b2bmarket.ca/security/">Security</a><a href="https://www.b2bmarket.ca/privacy-policy/">Privacy Policy</a><a href="https://www.b2bmarket.ca/terms-of-service/">Terms of Service</a></div>' +
-      '<div><h2>Company</h2><a href="https://www.b2bmarket.ca/about/">About us</a><a href="https://www.b2bmarket.ca/how-it-works/">How it works</a><a href="https://www.b2bmarket.ca/help/">Help Centre</a><a href="https://www.linkedin.com/company/b2b-market-built-to-strengthen-b2b-trade">LinkedIn</a><a href="https://canadiansme.ca/">CanadianSME Magazine</a></div>' +
-      '</div><div class="foot-base"><span>© ' + new Date().getFullYear() + ' B2B Market. Built for Canadian businesses.</span><span>Design prototype. Product, supplier and request rows are sample data.</span></div></div></footer>' +
-      '<div class="tray" id="tray" hidden><div class="wrap"><strong>Compare</strong><div class="items" id="trayItems"></div><button class="btn btn-quiet btn-s" id="trayClear" type="button">Clear</button><button class="btn btn-primary btn-s" id="trayGo" type="button">Compare products</button></div></div>' +
-      '<div class="toast" id="toast" role="status" hidden></div>' +
-      '<dialog id="cmpDlg" aria-labelledby="cmpTitle"><div class="dlg-head"><h2 id="cmpTitle" style="font-size:20px">Compare products</h2><button class="btn btn-quiet btn-s" type="button" id="cmpClose">Close</button></div><div class="dlg-body" id="cmpBody"></div></dialog>';
-  }
-
+  /* ---------- header: category menu, search suggestions, counters ---------- */
   var toastTimer;
-  function toast(msg) {
-    var t = $('#toast'); if (!t) return;
-    t.textContent = msg; t.hidden = false;
-    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.hidden = true; }, 3200);
+  function toast(msg) { var t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.hidden = true; }, 3400); }
+  function counts() { [['#quoteCount', quote.length], ['#savedCount', saved.length]].forEach(function (x) { var el = $(x[0]); el.textContent = x[1]; el.hidden = !x[1]; }); }
+  function chrome() {
+    var btn = $('#catBtn'), menu = $('#catMenu');
+    var setMenu = function (open) { menu.hidden = !open; btn.setAttribute('aria-expanded', open); };
+    btn.addEventListener('click', function (e) { e.stopPropagation(); setMenu(menu.hidden); });
+    document.addEventListener('click', function (e) { if (!menu.hidden && !menu.contains(e.target)) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setMenu(false); $('#suggest').hidden = true; } });
+
+    var q = $('#q'), box = $('#suggest');
+    if (param('q')) q.value = param('q');
+    q.addEventListener('input', function () {
+      var v = q.value.trim().toLowerCase(); if (v.length < 2) { box.hidden = true; return; }
+      var hit = function (s) { return s.toLowerCase().indexOf(v) >= 0; };
+      var cs = D.cats.filter(function (c) { return hit(c.name) || c.subs.some(hit) || c.words.some(function (w) { return w.indexOf(v) === 0; }); }).slice(0, 3);
+      var ps = D.products.filter(function (p) { return hit(p.name) || hit(p.sub); }).slice(0, 5);
+      var ss = D.suppliers.filter(function (s) { return hit(s.name) || hit(s.city); }).slice(0, 3);
+      var html = '';
+      if (cs.length) html += '<h3>Categories</h3>' + cs.map(function (c) { return '<a href="' + c.slug + '.html">' + ic(c.icon, 'ic-s') + c.name + '<span>' + c.products + ' products</span></a>'; }).join('');
+      if (ps.length) html += '<h3>Products</h3>' + ps.map(function (p) { return '<a href="product.html?id=' + p.id + '">' + ic('tag', 'ic-s') + esc(p.name) + '<span>' + (p.min != null ? 'from ' + money(p.min) : 'on request') + '</span></a>'; }).join('');
+      if (ss.length) html += '<h3>Suppliers</h3>' + ss.map(function (s) { return '<a href="supplier.html?id=' + s.id + '">' + ic('store', 'ic-s') + esc(s.name) + '<span>' + s.city + ', ' + s.prov + '</span></a>'; }).join('');
+      html += '<h3>Not finding it?</h3><a href="post-request.html?need=' + encodeURIComponent(q.value.trim()) + '">' + ic('spark', 'ic-s') + 'Ask suppliers to quote “' + esc(q.value.trim()) + '”</a>';
+      box.innerHTML = html; box.hidden = false;
+    });
+    document.addEventListener('click', function (e) { if (!e.target.closest('.search')) box.hidden = true; });
+    counts();
   }
 
   /* ---------- quote list, saved, compare ---------- */
-  var quote = store.get('b2b.quote', []);
-  var saved = store.get('b2b.saved', []);
-  var compare = [];
-
-  function counts() {
-    [['#quoteCount', quote.length], ['#savedCount', saved.length]].forEach(function (x) {
-      var el = $(x[0]); if (!el) return; el.textContent = x[1]; el.hidden = !x[1];
-    });
-  }
-  function addQuote(id) {
-    if (quote.indexOf(id) < 0) { quote.push(id); store.set('b2b.quote', quote); }
-    counts(); toast('Added to your quote list. Send one request for everything on it.');
-  }
-  function drawTray() {
-    var tray = $('#tray'); if (!tray) return;
-    tray.hidden = !compare.length;
-    $('#trayItems').innerHTML = compare.map(function (id) { return '<span class="pill">' + esc(product(id).name) + '</span>'; }).join('');
-  }
+  function addQuote(id) { if (quote.indexOf(id) < 0) { quote.push(id); store.set('b2b.quote', quote); } counts(); toast('Added to your quote list. Send one request for everything on it.'); }
+  function drawTray() { $('#tray').hidden = !compare.length; $('#trayItems').innerHTML = compare.map(function (id) { return '<span class="tag">' + esc(prod(id).name) + '</span>'; }).join(''); }
   function openCompare() {
     if (compare.length < 2) { toast('Pick at least two products to compare.'); return; }
-    var ps = compare.map(product);
-    var row = function (label, fn) { return '<tr><th scope="row">' + label + '</th>' + ps.map(function (p) { return '<td>' + fn(p) + '</td>'; }).join('') + '</tr>'; };
+    var ps = compare.map(prod), row = function (l, f) { return '<tr><th scope="row">' + l + '</th>' + ps.map(function (p) { return '<td>' + f(p) + '</td>'; }).join('') + '</tr>'; };
     $('#cmpBody').innerHTML = '<table><thead><tr><th></th>' + ps.map(function (p) { return '<th scope="col">' + esc(p.name) + '</th>'; }).join('') + '</tr></thead><tbody>' +
-      row('Price at minimum order', function (p) { return money(p.hi) + ' per ' + p.unit; }) +
-      row('Best volume price', function (p) { return money(p.lo) + ' at ' + p.moq * 5 + '+ ' + plural(p.unit, 2); }) +
-      row('Minimum order', function (p) { return p.moq + ' ' + plural(p.unit, p.moq); }) +
-      row('Ships in', function (p) { return p.lead + ' business days'; }) +
-      row('Supplier', function (p) { var s = SUPPLIERS[p.sup]; return esc(s.name) + ', ' + s.city + ', ' + s.prov; }) +
-      row('', function (p) { return '<button class="btn btn-primary btn-s" type="button" data-quote="' + p.id + '">Add to quote list</button>'; }) +
+      row('Price at minimum order', function (p) { return p.min == null ? 'On request' : money(p.max) + ' per ' + p.unit; }) +
+      row('Best volume price', function (p) { var t = tiers(p); return t ? money(p.min) + ' at ' + t[2].from + '+ ' + p.units : 'On request'; }) +
+      row('Minimum order', function (p) { return p.moq + ' ' + (p.moq === 1 ? p.unit : p.units); }) +
+      row('Ships in', function (p) { return p.lead; }) +
+      row('Supplier', function (p) { var s = sup(p.sup); return esc(s.name) + ', ' + s.city + ', ' + s.prov; }) +
+      row('', function (p) { return '<button class="btn btn-buy btn-s" type="button" data-quote="' + p.id + '">Add to quote list</button>'; }) +
       '</tbody></table><p class="note">Sample listings. Prices are indicative until a supplier quotes.</p>';
     $('#cmpDlg').showModal();
   }
 
-  function card(p) {
-    var s = SUPPLIERS[p.sup], c = cat(p.cat), isSaved = saved.indexOf(p.id) >= 0;
-    return '<article class="pcard">' +
-      '<a class="pimg" href="product.html?id=' + p.id + '"><img loading="lazy" src="' + IMG(p.img) + '" alt="' + esc(p.name) + '"><span class="badge badge-sample">Sample listing</span></a>' +
-      '<button class="save" type="button" data-save="' + p.id + '" aria-pressed="' + isSaved + '" aria-label="Save ' + esc(p.name) + '">' + ic('heart') + '</button>' +
-      '<div class="pbody"><span class="cat">' + c.name + ' / ' + p.sub + '</span>' +
-      '<h3><a href="product.html?id=' + p.id + '">' + esc(p.name) + '</a></h3>' + ladder(p, -1) +
-      '<div class="pmeta"><span>Price per <b>' + p.unit + '</b></span><span>Min. order <b>' + p.moq + ' ' + plural(p.unit, p.moq) + '</b></span><span>Ships in <b>' + p.lead + ' days</b></span></div>' +
-      '<div class="psup">' + ic('leaf', 'ic-s') + '<a href="supplier.html">' + esc(s.name) + '</a><span class="muted">' + s.city + ', ' + s.prov + '</span></div>' +
-      '<div class="pact"><button class="btn btn-line btn-s" type="button" data-quote="' + p.id + '">Add to quote list</button>' +
-      '<label class="cmp"><input type="checkbox" data-compare="' + p.id + '"' + (compare.indexOf(p.id) >= 0 ? ' checked' : '') + '>Compare</label></div></div></article>';
+  /* ---------- shared blocks ---------- */
+  function faqs() { $$('[data-faq]').forEach(function (el) { el.innerHTML = D.faqs.map(function (f) { return '<details><summary>' + esc(f[0]) + '</summary><p>' + esc(f[1]) + '</p></details>'; }).join(''); }); }
+  function tabsets() {
+    $$('[role=tablist]').forEach(function (bar) {
+      bar.addEventListener('click', function (e) { var b = e.target.closest('[role=tab]'); if (!b) return; $$('[role=tab]', bar).forEach(function (t) { t.setAttribute('aria-selected', t === b); $('#' + t.getAttribute('aria-controls')).hidden = t !== b; }); });
+    });
+  }
+  function companies(el, tabsEl, limit) {
+    var tally = {}; D.partners.forEach(function (c) { if (c[3]) tally[c[3]] = (tally[c[3]] || 0) + 1; });
+    var draw = function (pv) {
+      el.innerHTML = D.partners.filter(function (c) { return pv === 'all' || c[3] === pv; }).slice(0, limit || 99).map(function (c) {
+        return '<a class="co panel" href="' + c[4] + '" rel="noopener"><span class="logo-box"><span class="mono">' + initials(c[0]) + '</span><img loading="lazy" src="https://www.b2bmarket.ca/images/partners/' + c[1] + '.webp" alt=""></span><span><strong>' + esc(c[0]) + '</strong><span>' + (c[2] ? c[2] + ', ' + c[3] : 'Canada') + '</span></span></a>';
+      }).join('');
+      if (tabsEl) $$('.tab', tabsEl).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.pv === pv); });
+    };
+    if (tabsEl) {
+      tabsEl.innerHTML = '<button class="tab" type="button" data-pv="all">All ' + D.partners.length + '</button>' + Object.keys(tally).sort(function (a, b) { return tally[b] - tally[a]; }).map(function (pv) { return '<button class="tab" type="button" data-pv="' + pv + '">' + D.provs[pv] + ' ' + tally[pv] + '</button>'; }).join('');
+      tabsEl.addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (b) draw(b.dataset.pv); });
+    }
+    draw('all');
+  }
+  function catStrip(el) {
+    el.innerHTML = D.cats.map(function (c) { return '<a href="' + c.slug + '.html"><span class="ph">' + ic(c.icon, 'ic-l') + '<img loading="lazy" src="' + IMG(c.img) + '" alt=""></span><span>' + c.name + '<small>' + c.products + ' products</small></span></a>'; }).join('');
+  }
+  function needChips(n, dark) {
+    var k = dark ? 'pill pill-ok' : 'chip', miss = dark ? 'pill pill-miss' : 'chip chip-miss', h = '';
+    if (n.qty) h += '<span class="' + k + '">' + ic('check', 'ic-s') + n.qty.toLocaleString('en-CA') + (n.noun ? ' ' + n.noun : '') + '</span>';
+    if (n.city) h += '<span class="' + k + '">' + ic('pin', 'ic-s') + n.city + ', ' + n.prov + '</span>';
+    if (n.when) h += '<span class="' + k + '">' + ic('calendar', 'ic-s') + n.when + '</span>';
+    if (n.cat) h += '<span class="' + k + '">' + ic(n.cat.icon, 'ic-s') + n.cat.name + '</span>';
+    if (!n.qty) h += '<span class="' + miss + '">Add a quantity</span>';
+    if (!n.city) h += '<span class="' + miss + '">Add a delivery city</span>';
+    return h;
   }
 
-  /* ---------- page renderers ---------- */
-  function home() {
-    var rail = $('#rail');
-    if (rail) rail.innerHTML = '<h2>Categories</h2>' + CATS.map(function (c) { return '<a href="#categories">' + ic(c.icon) + '<span>' + c.name + '</span><span>' + c.products + '</span></a>'; }).join('') + '<a class="rail-foot" href="requests.html#post"><b>Not listed here?</b>Post a request and suppliers come to you.</a>';
+  /* ---------- pages ---------- */
+  var pages = {};
 
-    var live = $('#liveList');
-    if (live) live.innerHTML = REQUESTS.slice(0, 3).map(function (r) { return '<li><strong>' + esc(r.title) + '</strong>' + r.qty + ' to ' + r.city + ', ' + r.prov + '</li>'; }).join('');
+  pages.home = function () {
+    catStrip($('#catStrip'));
+    $('#readyGrid').innerHTML = ['p1', 'p8', 'p11', 'p9', 'p14', 'p16', 'p12', 'p3'].map(prod).map(card).join('');
+    $('#reqPreview').innerHTML = D.requests.slice(0, 3).map(reqRow).join('');
+    companies($('#coGrid'), null, 12);
+    $('#arts').innerHTML = D.articles.map(function (a) { return '<a href="' + a[1] + '"><span>' + a[2] + '</span>' + esc(a[0]) + ic('arrow', 'ic-s') + '</a>'; }).join('');
 
-    var grid = $('#readyGrid'), tabs = $('#readyTabs');
-    if (grid && tabs) {
-      var used = CATS.filter(function (c) { return PRODUCTS.some(function (p) { return p.cat === c.id; }); });
-      var draw = function (id) {
-        grid.innerHTML = PRODUCTS.filter(function (p) { return id === 'all' || p.cat === id; }).map(card).join('');
-        $$('.tab', tabs).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.cat === id); });
-      };
-      tabs.innerHTML = '<button class="tab" type="button" data-cat="all">All</button>' + used.map(function (c) { return '<button class="tab" type="button" data-cat="' + c.id + '">' + c.name + '</button>'; }).join('');
-      tabs.addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (b) draw(b.dataset.cat); });
-      draw('all');
-    }
+    var seg = $('#heroSeg'), panes = { buy: $('#heroBuy'), sell: $('#heroSell') };
+    seg.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; $$('button', seg).forEach(function (x) { x.setAttribute('aria-selected', x === b); }); panes.buy.hidden = b.dataset.side !== 'buy'; panes.sell.hidden = b.dataset.side !== 'sell'; });
+    var need = $('#need'), out = $('#needOut');
+    var examples = D.popular.slice(0, 5).map(function (p) { return '<button class="pill" type="button" data-need="' + p + '">' + p + '</button>'; }).join('');
+    var draw = function () {
+      var v = need.value.trim();
+      if (v.length < 3) { out.innerHTML = '<span>Try</span>' + examples; return; }
+      var n = parseNeed(v), nSup = n.cat ? D.suppliers.filter(function (s) { return s.cats.indexOf(n.cat.id) >= 0; }).length : 0;
+      out.innerHTML = '<span>We understood</span>' + needChips(n, true) + (nSup ? '<span class="pill">' + nSup + ' matching suppliers</span>' : '');
+    };
+    need.addEventListener('input', draw);
+    out.addEventListener('click', function (e) { var b = e.target.closest('[data-need]'); if (b) { need.value = b.dataset.need; need.focus(); draw(); } });
+    $('#needForm').addEventListener('submit', function (e) { e.preventDefault(); if (!need.value.trim()) { toast('Describe what you need, for example: 2,000 shipping boxes to Mississauga.'); need.focus(); return; } location.href = 'post-request.html?need=' + encodeURIComponent(need.value.trim()); });
+    draw();
+    var sc = $('#sellCat'), so = $('#sellOut');
+    sc.innerHTML = '<option value="">Choose what you sell</option>' + D.cats.map(function (c) { return '<option value="' + c.id + '">' + c.name + '</option>'; }).join('');
+    var drawSell = function () {
+      var n = D.requests.filter(function (r) { return !sc.value || r.cat === sc.value; }).length;
+      so.innerHTML = '<span class="pill pill-ok">' + n + (n === 1 ? ' open request' : ' open requests') + (sc.value ? ' in ' + cat(sc.value).name : ' right now') + '</span><span>Each request takes ' + D.slots + ' quotes, so early replies get seen.</span>';
+    };
+    sc.addEventListener('change', drawSell); drawSell();
+    $('#sellForm').addEventListener('submit', function (e) { e.preventDefault(); location.href = 'requests.html' + (sc.value ? '?cat=' + sc.value : ''); });
+    var how = $('#howTabs');
+    how.addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (!b) return; $$('.tab', how).forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); $('#howBuy').hidden = b.dataset.side !== 'buy'; $('#howSell').hidden = b.dataset.side !== 'sell'; });
+  };
 
-    var cats = $('#catGrid');
-    if (cats) cats.innerHTML = CATS.map(function (c) {
-      return '<a class="cat-tile" href="#ready"><img loading="lazy" src="' + IMG(c.img) + '" alt=""><div class="t"><h3>' + c.name + '</h3><span>' + c.products + ' products from ' + c.vendors + ' vendors</span></div></a>';
+  pages.categories = function () {
+    $('#catCards').innerHTML = D.cats.map(function (c) {
+      var n = D.suppliers.filter(function (s) { return s.cats.indexOf(c.id) >= 0; }).length;
+      return '<article class="pcard"><a class="pimg" href="' + c.slug + '.html" style="aspect-ratio:16/9"><img loading="lazy" src="' + IMG(c.img) + '" alt=""></a><div class="pbody"><h3 style="font:600 19px var(--display)"><a href="' + c.slug + '.html">' + c.name + '</a></h3><p class="small">' + c.intro + '</p>' +
+        '<div class="taglist">' + c.subs.map(function (s) { return '<a class="tag" href="' + c.slug + '.html?sub=' + encodeURIComponent(s) + '" style="text-decoration:none">' + s + '</a>'; }).join('') + '</div>' +
+        '<div class="psup"><span><b style="color:var(--ink)">' + c.products + '</b> products</span><span><b style="color:var(--ink)">' + c.vendors + '</b> vendors</span><a class="link" style="margin-left:auto" href="' + c.slug + '.html">Open ' + ic('arrow', 'ic-s') + '</a></div></div></article>';
     }).join('');
+  };
 
-    var rank = function (el, list, fn) {
-      if (!$(el)) return;
-      $(el).innerHTML = list.slice(0, 4).map(function (p) { return '<li><img loading="lazy" src="' + IMG(p.img) + '" alt=""><div><a href="product.html?id=' + p.id + '">' + esc(p.name) + '</a><span class="muted tiny">' + fn(p) + '</span></div></li>'; }).join('');
-    };
-    var by = function (f) { return PRODUCTS.slice().sort(function (a, b) { return f(a) - f(b); }); };
-    rank('#rankMoq', by(function (p) { return p.moq * p.hi; }), function (p) { return 'First order from ' + money(p.moq * p.hi); });
-    rank('#rankLead', by(function (p) { return p.lead; }), function (p) { return 'Ships in ' + p.lead + ' business days'; });
-    rank('#rankSave', by(function (p) { return -(p.hi - p.lo) / p.hi; }), function (p) { return 'Save ' + Math.round((p.hi - p.lo) / p.hi * 100) + '% at ' + p.moq * 5 + '+ ' + plural(p.unit, 2); });
-
-    var rp = $('#reqPreview');
-    if (rp) rp.innerHTML = REQUESTS.slice(0, 3).map(reqRow).join('');
-
-    var cg = $('#coGrid'), ct = $('#coTabs');
-    if (cg && ct) {
-      var tally = {};
-      COMPANIES.forEach(function (c) { if (c[2]) tally[c[2]] = (tally[c[2]] || 0) + 1; });
-      var provs = Object.keys(tally).sort(function (a, b) { return tally[b] - tally[a]; });
-      var drawCo = function (pv) {
-        cg.innerHTML = COMPANIES.filter(function (c) { return pv === 'all' || c[2] === pv; }).map(function (c) {
-          var mono = c[0].split(' ').slice(0, 2).map(function (w) { return w[0]; }).join('').toUpperCase();
-          return '<a class="co panel" href="' + c[3] + '" rel="noopener"><span class="mono">' + mono + '</span><span><strong>' + esc(c[0]) + '</strong><span>' + (c[1] ? c[1] + ', ' + c[2] : 'Canada') + '</span></span></a>';
-        }).join('');
-        $$('.tab', ct).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.pv === pv); });
-      };
-      ct.innerHTML = '<button class="tab" type="button" data-pv="all">All ' + COMPANIES.length + '</button>' + provs.map(function (pv) { return '<button class="tab" type="button" data-pv="' + pv + '">' + PROV_NAMES[pv] + ' ' + tally[pv] + '</button>'; }).join('');
-      ct.addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (b) drawCo(b.dataset.pv); });
-      drawCo('all');
-    }
-
-    var ask = $('#askForm');
-    if (ask) ask.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var v = $('#askText').value.trim();
-      if (!v) { toast('Describe what you need, for example: 2,000 shipping boxes.'); $('#askText').focus(); return; }
-      store.set('b2b.draft', { what: v, qty: $('#askQty').value, city: $('#askCity').value });
-      location.href = 'requests.html#post';
-    });
-    $$('[data-fill]').forEach(function (b) { b.addEventListener('click', function () { $('#askText').value = b.dataset.fill; $('#askText').focus(); }); });
-  }
-
-  function reqRow(r) {
-    var left = QUOTE_SLOTS - r.quotes, c = cat(r.cat);
-    return '<article class="req panel"><div><div class="badge-row"><span class="badge badge-blue">' + c.name + '</span><span class="badge badge-sample">Sample request</span></div>' +
-      '<h3 style="margin-top:8px">' + esc(r.title) + '</h3><div class="facts"><span>Quantity <b>' + r.qty + '</b></span><span>Deliver to <b>' + r.city + ', ' + r.prov + '</b></span><span>Respond by <b>' + r.due + '</b></span><span>' + r.id + ', posted ' + r.posted + '</span></div></div>' +
-      '<div class="slots"><b>' + left + ' of ' + QUOTE_SLOTS + '</b> quote slots left<div class="meter" role="img" aria-label="' + r.quotes + ' quotes received"><i style="width:' + r.quotes * 10 + '%"></i></div></div>' +
-      '<a class="btn btn-primary btn-s" href="' + PORTAL + '">Quote now</a></article>';
-  }
-
-  function requests() {
-    var list = $('#reqList'); if (!list) return;
-    var catBox = $('#fCats'), provBox = $('#fProvs');
-    catBox.innerHTML += CATS.map(function (c) { return '<label><input type="checkbox" name="cat" value="' + c.id + '">' + c.name + '</label>'; }).join('');
-    var provs = REQUESTS.map(function (r) { return r.prov; }).filter(function (v, i, a) { return a.indexOf(v) === i; });
-    provBox.innerHTML += provs.map(function (p) { return '<label><input type="checkbox" name="prov" value="' + p + '">' + PROV_NAMES[p] + '</label>'; }).join('');
+  pages.category = function () {
+    var c = cat(document.body.dataset.cat), all = D.products.filter(function (p) { return p.cat === c.id; }), sub = param('sub') || 'all';
+    var chips = $('#subChips'), grid = $('#catGrid'), sort = $('#catSort');
     var draw = function () {
-      var cs = $$('input[name=cat]:checked').map(function (i) { return i.value; });
-      var ps = $$('input[name=prov]:checked').map(function (i) { return i.value; });
-      var open = $('#fOpen').checked;
-      var rows = REQUESTS.filter(function (r) { return (!cs.length || cs.indexOf(r.cat) >= 0) && (!ps.length || ps.indexOf(r.prov) >= 0) && (!open || QUOTE_SLOTS - r.quotes >= 5); });
-      $('#reqCount').textContent = rows.length + (rows.length === 1 ? ' open request' : ' open requests');
-      list.innerHTML = rows.length ? rows.map(reqRow).join('') : '<div class="empty"><h3>No requests match these filters</h3><p class="muted">Clear a filter, or add more categories to your supplier profile to see more requests.</p></div>';
+      var list = all.filter(function (p) { return sub === 'all' || p.sub === sub; });
+      if (sort.value === 'low') list.sort(function (a, b) { return (a.min == null ? 1e9 : a.min) - (b.min == null ? 1e9 : b.min); });
+      if (sort.value === 'fast') list.sort(function (a, b) { return a.days - b.days; });
+      if (sort.value === 'moq') list.sort(function (a, b) { return a.moq - b.moq; });
+      grid.innerHTML = list.length ? list.map(card).join('') : empty('No ' + sub.toLowerCase() + ' listings yet', 'Suppliers in ' + c.name + ' are still adding stock. Post a request and they will quote you directly.', c.id);
+      $('#catCount').textContent = list.length + (list.length === 1 ? ' listing' : ' listings');
+      $$('.tab', chips).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.sub === sub); });
     };
-    $('#filters').addEventListener('change', draw); draw();
+    chips.innerHTML = '<button class="tab" type="button" data-sub="all">All ' + c.name.toLowerCase() + '</button>' + c.subs.map(function (s) { return '<button class="tab" type="button" data-sub="' + s + '">' + s + '</button>'; }).join('');
+    chips.addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (b) { sub = b.dataset.sub; draw(); } });
+    sort.addEventListener('change', draw); draw();
+    var ss = D.suppliers.filter(function (s) { return s.cats.indexOf(c.id) >= 0; });
+    $('#catSups').innerHTML = ss.map(supCard).join('');
+    var rs = D.requests.filter(function (r) { return r.cat === c.id; });
+    $('#catReqs').innerHTML = rs.length ? rs.map(reqRow).join('') : '<div class="empty"><h3>No open requests in ' + c.name + ' today</h3><p class="muted">Register as a supplier and we will send you new requests in this category.</p></div>';
+    $('#catNeed').addEventListener('submit', function (e) { e.preventDefault(); location.href = 'post-request.html?cat=' + c.id + '&need=' + encodeURIComponent($('#catNeedText').value.trim()); });
+    $('#otherCats').innerHTML = D.cats.filter(function (x) { return x.id !== c.id; }).map(function (x) { return '<a class="tab" href="' + x.slug + '.html">' + x.name + '</a>'; }).join('');
+  };
 
-    var d = store.get('b2b.draft', null);
-    if (d) { $('#pWhat').value = d.what || ''; $('#pQty').value = d.qty || ''; $('#pCity').value = d.city || ''; }
-    $('#postForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!$('#pWhat').value.trim() || !$('#pQty').value.trim() || !$('#pCity').value.trim()) { toast('Add what you need, a quantity and a delivery city.'); return; }
-      $('#postResult').hidden = false; $('#postResult').focus();
-    });
-  }
+  pages.products = function () {
+    var f = $('#filters'), grid = $('#prodGrid'), q = (param('q') || '').trim(), onlySaved = param('saved') === '1';
+    var n = function (fn) { return D.products.filter(fn).length; };
+    $('#fCat').innerHTML += D.cats.map(function (c) { return '<label><input type="checkbox" name="cat" value="' + c.id + '"' + (param('cat') === c.id ? ' checked' : '') + '>' + c.name + '<span>' + n(function (p) { return p.cat === c.id; }) + '</span></label>'; }).join('');
+    var provs = D.suppliers.map(function (s) { return s.prov; }).filter(function (v, i, a) { return a.indexOf(v) === i; });
+    $('#fProv').innerHTML += provs.map(function (pv) { return '<label><input type="checkbox" name="prov" value="' + pv + '">' + D.provs[pv] + '</label>'; }).join('');
+    if (q) $('#prodTitle').textContent = 'Results for “' + q + '”';
+    if (onlySaved) $('#prodTitle').textContent = 'Saved products';
+    var vals = function (name) { return $$('input[name=' + name + ']:checked', f).map(function (i) { return i.value; }); };
+    var draw = function () {
+      var cs = vals('cat'), ps = vals('prov'), moq = $('input[name=moq]:checked', f).value, priced = $('#fPriced').checked, sort = $('#prodSort').value;
+      var words = q.toLowerCase().split(/\s+/).filter(Boolean);
+      var list = D.products.filter(function (p) {
+        var s = sup(p.sup), hay = (p.name + ' ' + p.sub + ' ' + cat(p.cat).name + ' ' + s.name + ' ' + p.desc).toLowerCase();
+        return (!cs.length || cs.indexOf(p.cat) >= 0) && (!ps.length || ps.indexOf(s.prov) >= 0) && (moq === 'any' || p.moq <= +moq) && (!priced || p.min != null) &&
+          (!onlySaved || saved.indexOf(p.id) >= 0) && words.every(function (w) { return hay.indexOf(w.replace(/(es|s)$/, '')) >= 0; });
+      });
+      if (sort === 'low') list.sort(function (a, b) { return (a.min == null ? 1e9 : a.min) - (b.min == null ? 1e9 : b.min); });
+      if (sort === 'high') list.sort(function (a, b) { return (b.max || 0) - (a.max || 0); });
+      if (sort === 'fast') list.sort(function (a, b) { return a.days - b.days; });
+      if (sort === 'moq') list.sort(function (a, b) { return a.moq - b.moq; });
+      $('#prodCount').textContent = list.length + (list.length === 1 ? ' product' : ' products');
+      grid.innerHTML = list.length ? list.map(card).join('') : (onlySaved ? '<div class="empty"><h3>Nothing saved yet</h3><p class="muted">Tap the heart on any product to keep it here.</p></div>' : empty('No products match', q ? 'Suppliers may still carry “' + esc(q) + '”. Post a request and let them quote.' : 'Remove a filter, or post a request and let suppliers quote.'));
+    };
+    f.addEventListener('change', draw); $('#prodSort').addEventListener('change', draw);
+    $('#fClear').addEventListener('click', function () { $$('input[type=checkbox]', f).forEach(function (i) { i.checked = false; }); $('input[name=moq][value=any]', f).checked = true; draw(); });
+    draw();
+  };
 
-  function pdp() {
-    var root = $('#pdp'); if (!root) return;
-    var id = new URLSearchParams(location.search).get('id');
-    var p = product(id) || PRODUCTS[0], s = SUPPLIERS[p.sup], c = cat(p.cat);
+  pages.product = function () {
+    var p = prod(param('id')) || D.products[0], s = sup(p.sup), c = cat(p.cat), t = tiers(p);
     document.title = p.name + ' | B2B Market';
-    $('#crumbCat').textContent = c.name; $('#crumbName').textContent = p.name;
-    $('#pImg').src = IMG(p.img); $('#pImg').alt = p.name;
-    $('#pName').textContent = p.name; $('#pSub').textContent = c.name + ' / ' + p.sub;
-    $$('[data-sup-name]').forEach(function (el) { el.textContent = s.name; });
-    $$('[data-sup-loc]').forEach(function (el) { el.textContent = s.city + ', ' + s.prov; });
-    $('#supAvatar').textContent = s.name.slice(0, 2).toUpperCase();
-    $('#sampleLine').textContent = 'Order 1 ' + p.unit + ' at ' + money(p.hi) + ' to check quality before a full order.';
-    $('#moqLine').textContent = 'Minimum order ' + p.moq + ' ' + plural(p.unit, p.moq) + '.';
-    $('#unitLabel').textContent = 'Quantity (' + plural(p.unit, 2) + ')';
-    var qty = $('#qty'); qty.value = p.moq; qty.min = 1;
+    $('#crumbCat').textContent = c.name; $('#crumbCat').href = c.slug + '.html'; $('#crumbName').textContent = p.name;
+    $('#pImg').src = IMG(p.img); $('#pImg').alt = p.name; $('#pName').textContent = p.name; $('#pDesc').textContent = p.desc;
+    $('#pSub').innerHTML = '<a href="' + c.slug + '.html">' + c.name + '</a> / ' + p.sub;
+    $('#supName').textContent = s.name; $('#supLoc').textContent = s.city + ', ' + D.provs[s.prov]; $('#supAvatar').textContent = initials(s.name);
+    $('#supType').textContent = s.type; $('#supServes').textContent = s.serves; $('#supLink').href = 'supplier.html?id=' + s.id;
+    $('#moqLine').textContent = 'Minimum order ' + p.moq + ' ' + (p.moq === 1 ? p.unit : p.units) + '. Ships in ' + p.lead + '.';
+    $('#unitLabel').textContent = 'Quantity (' + p.units + ')';
+    $('#specRows').innerHTML = p.specs.map(function (x) { return '<tr><th scope="row">' + esc(x[0]) + '</th><td>' + esc(x[1]) + '</td></tr>'; }).join('');
+    var qty = $('#qty'); qty.value = p.moq;
     var draw = function () {
-      var q = Math.max(1, parseInt(qty.value, 10) || 1), i = tierFor(p, q), t = tiers(p)[i];
+      var q = Math.max(1, parseInt(qty.value, 10) || 1);
+      if (!t) { $('#ladder').innerHTML = ladder(p); $('#totalBox').hidden = true; $('#nudge').textContent = 'Add it to your quote list and the supplier will price ' + q + ' ' + (q === 1 ? p.unit : p.units) + '.'; return; }
+      var i = tierFor(p, q), x = t[i], next = t[i + 1];
       $('#ladder').innerHTML = ladder(p, q >= p.moq ? i : -1, true);
-      $('#unitPrice').textContent = money(t.price) + ' per ' + p.unit;
-      $('#lineTotal').textContent = money(t.price * q);
-      var next = tiers(p)[i + 1];
-      $('#nudge').textContent = q < p.moq ? 'Below the minimum order of ' + p.moq + '. You can still order a sample.' : next ? 'Add ' + (next.from - q) + ' more to pay ' + money(next.price) + ' per ' + p.unit + '.' : 'You have the best volume price.';
+      $('#unitPrice').textContent = money(x.price) + ' per ' + p.unit; $('#lineTotal').textContent = money(x.price * q);
+      $('#nudge').textContent = q < p.moq ? 'Below the minimum order of ' + p.moq + '.' : next ? 'Add ' + (next.from - q) + ' more to pay ' + money(next.price) + ' per ' + p.unit + ' and save ' + money((x.price - next.price) * next.from) + '.' : 'You have the best volume price.';
     };
     qty.addEventListener('input', draw);
     $('#qMinus').addEventListener('click', function () { qty.value = Math.max(1, (parseInt(qty.value, 10) || 1) - 1); draw(); });
     $('#qPlus').addEventListener('click', function () { qty.value = (parseInt(qty.value, 10) || 0) + 1; draw(); });
     draw();
-    $('#leadRows').innerHTML = tiers(p).map(function (t, i) { return '<tr><td>' + (t.to ? t.from + ' to ' + t.to : t.from + ' or more') + ' ' + plural(p.unit, 2) + '</td><td>' + (p.lead + i * 3) + ' business days</td></tr>'; }).join('');
     $('#pAdd').addEventListener('click', function () { addQuote(p.id); });
-    $$('.opt').forEach(function (g) { g.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; $$('button', g).forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); }); });
-    var others = PRODUCTS.filter(function (x) { return x.id !== p.id; });
-    var same = others.filter(function (x) { return x.cat === p.cat; });
-    $('#related').innerHTML = same.concat(others.filter(function (x) { return x.cat !== p.cat; })).slice(0, 4).map(card).join('');
-    tabset('#pTabs');
-  }
+    $('#pAsk').href = 'post-request.html?cat=' + c.id + '&need=' + encodeURIComponent(p.name);
+    var alts = D.products.filter(function (x) { return x.id !== p.id && x.sub === p.sub && x.sup !== p.sup; });
+    $('#altBox').hidden = !alts.length;
+    $('#altRows').innerHTML = [p].concat(alts).map(function (x) { var z = sup(x.sup); return '<tr><td><a href="product.html?id=' + x.id + '">' + esc(x.name) + '</a>' + (x.id === p.id ? ' <span class="badge badge-blue">This listing</span>' : '') + '</td><td>' + esc(z.name) + ', ' + z.city + ', ' + z.prov + '</td><td>' + (x.min == null ? 'On request' : money(x.min) + ' to ' + money(x.max)) + '</td><td>' + x.moq + ' ' + (x.moq === 1 ? x.unit : x.units) + '</td><td>' + x.lead + '</td></tr>'; }).join('');
+    $('#tellList').innerHTML = c.tell.map(function (x) { return '<li>' + ic('check', 'ic-s') + '<span>' + x + '</span></li>'; }).join('');
+    var same = D.products.filter(function (x) { return x.id !== p.id && x.cat === p.cat; }), rest = D.products.filter(function (x) { return x.cat !== p.cat; });
+    $('#related').innerHTML = same.concat(rest).slice(0, 4).map(card).join('');
+    var seen = store.get('b2b.seen', []).filter(function (id) { return id !== p.id; }); seen.unshift(p.id); store.set('b2b.seen', seen.slice(0, 8));
+    $$('.opt').forEach(function (g) { g.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) $$('button', g).forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); }); });
+  };
 
-  function tabset(sel) {
-    var bar = $(sel); if (!bar) return;
-    bar.addEventListener('click', function (e) {
-      var b = e.target.closest('[role=tab]'); if (!b) return;
-      $$('[role=tab]', bar).forEach(function (t) { t.setAttribute('aria-selected', t === b); $('#' + t.getAttribute('aria-controls')).hidden = t !== b; });
+  pages.suppliers = function () {
+    var f = $('#supFilters'), grid = $('#supGrid');
+    $('#sCat').innerHTML += D.cats.map(function (c) { return '<option value="' + c.id + '"' + (param('cat') === c.id ? ' selected' : '') + '>' + c.name + '</option>'; }).join('');
+    var provs = D.suppliers.map(function (s) { return s.prov; }).filter(function (v, i, a) { return a.indexOf(v) === i; });
+    $('#sProv').innerHTML += provs.map(function (p) { return '<option value="' + p + '">' + D.provs[p] + '</option>'; }).join('');
+    var draw = function () {
+      var c = $('#sCat').value, pv = $('#sProv').value, q = $('#sQ').value.trim().toLowerCase();
+      var list = D.suppliers.filter(function (s) { return (!c || s.cats.indexOf(c) >= 0) && (!pv || s.prov === pv) && (!q || (s.name + ' ' + s.about + ' ' + s.city).toLowerCase().indexOf(q) >= 0); });
+      $('#supCount').textContent = list.length + (list.length === 1 ? ' supplier' : ' suppliers');
+      grid.innerHTML = list.length ? list.map(supCard).join('') : empty('No suppliers match yet', 'We are still onboarding suppliers in many provinces. Post a request and it reaches suppliers as they join.', c);
+    };
+    f.addEventListener('input', draw); f.addEventListener('submit', function (e) { e.preventDefault(); }); draw();
+  };
+
+  pages.supplier = function () {
+    var s = sup(param('id')) || D.suppliers[0], list = D.products.filter(function (p) { return p.sup === s.id; });
+    document.title = s.name + ' | B2B Market';
+    $$('[data-s=name]').forEach(function (e) { e.textContent = s.name; });
+    $('#sAvatar').textContent = initials(s.name); $('#sLine').textContent = s.type + ', ' + s.city + ', ' + D.provs[s.prov]; $('#sAbout').textContent = s.about;
+    $('#sFounded').textContent = s.founded; $('#sServes').textContent = s.serves; $('#sListings').textContent = list.length; $('#sType').textContent = s.type;
+    $('#sCaps').innerHTML = s.caps.map(function (x) { return '<span class="tag">' + x + '</span>'; }).join('');
+    $('#sCats').innerHTML = s.cats.map(function (c) { return '<a class="tag" style="text-decoration:none" href="' + cat(c).slug + '.html">' + cat(c).name + '</a>'; }).join('');
+    $('#sGrid').innerHTML = list.length ? list.map(card).join('') : empty('No listings yet', 'Ask ' + esc(s.name) + ' for a quote directly.', s.cats[0]);
+    $('#sAsk').href = 'post-request.html?cat=' + s.cats[0] + '&sup=' + s.id;
+    var rs = D.requests.filter(function (r) { return s.cats.indexOf(r.cat) >= 0; }).length;
+    $('#sReqs').textContent = rs;
+  };
+
+  pages.requests = function () {
+    var f = $('#filters'), list = $('#reqList'), pre = param('cat') || store.get('b2b.mycat', '');
+    $('#fCat').innerHTML += D.cats.map(function (c) { return '<label><input type="checkbox" name="cat" value="' + c.id + '"' + (pre === c.id ? ' checked' : '') + '>' + c.name + '<span>' + D.requests.filter(function (r) { return r.cat === c.id; }).length + '</span></label>'; }).join('');
+    var provs = D.requests.map(function (r) { return r.prov; }).filter(function (v, i, a) { return a.indexOf(v) === i; });
+    $('#fProv').innerHTML += provs.map(function (p) { return '<label><input type="checkbox" name="prov" value="' + p + '">' + D.provs[p] + '</label>'; }).join('');
+    var draw = function () {
+      var cs = $$('input[name=cat]:checked', f).map(function (i) { return i.value; }), ps = $$('input[name=prov]:checked', f).map(function (i) { return i.value; }), open = $('#fOpen').checked;
+      var rows = D.requests.filter(function (r) { return (!cs.length || cs.indexOf(r.cat) >= 0) && (!ps.length || ps.indexOf(r.prov) >= 0) && (!open || D.slots - r.quotes >= 5); });
+      if (cs.length === 1) store.set('b2b.mycat', cs[0]);
+      $('#reqCount').textContent = rows.length + (rows.length === 1 ? ' open request' : ' open requests');
+      list.innerHTML = rows.length ? rows.map(reqRow).join('') : '<div class="empty"><h3>No requests match these filters</h3><p class="muted">Clear a filter, or add more categories to your supplier profile to see more requests.</p></div>';
+    };
+    f.addEventListener('change', draw); draw();
+  };
+
+  pages.post = function () {
+    var what = $('#pWhat'), c0 = param('cat'), s0 = param('sup'), filled = {};
+    if (param('need')) what.value = param('need');
+    $('#pProv').innerHTML += Object.keys(D.provs).map(function (k) { return '<option value="' + k + '">' + D.provs[k] + '</option>'; }).join('');
+    $('#pCat').innerHTML += D.cats.map(function (c) { return '<option value="' + c.id + '"' + (c0 === c.id ? ' selected' : '') + '>' + c.name + '</option>'; }).join('');
+    if (s0 && sup(s0)) { $('#toSup').hidden = false; $('#toSupName').textContent = sup(s0).name; }
+    var drawList = function () {
+      $('#qlBox').hidden = !quote.length;
+      $('#qList').innerHTML = quote.map(function (id) { var p = prod(id); return '<div class="qitem"><span><b style="color:var(--ink)">' + esc(p.name) + '</b><br><span class="muted">' + sup(p.sup).name + ', min. ' + p.moq + ' ' + p.units + '</span></span><button class="btn btn-ghost btn-s" type="button" data-rm="' + id + '">Remove</button></div>'; }).join('');
+    };
+    $('#qList').addEventListener('click', function (e) { var b = e.target.closest('[data-rm]'); if (!b) return; quote.splice(quote.indexOf(b.dataset.rm), 1); store.set('b2b.quote', quote); counts(); drawList(); score(); });
+    var auto = function (el, v, key) { if (v && (!el.value || filled[key] === el.value)) { el.value = v; filled[key] = v; } };
+    var score = function () {
+      var checks = [[what.value.trim().length > 12 || quote.length, 'what you need'], [$('#pQty').value.trim(), 'a quantity'], [$('#pCity').value.trim(), 'a delivery city'], [$('#pDate').value, 'a needed-by date'], [$('#pCat').value, 'a category'], [/\d\s*(x|×|in|mm|cm|lb|kw|w|gb)\b/i.test(what.value) || what.value.length > 60, 'a size or specification'], [$('#pBudget').value.trim(), 'a target budget']];
+      var done = checks.filter(function (x) { return x[0]; }).length, pct = Math.round(done / checks.length * 100), miss = checks.filter(function (x) { return !x[0]; }).map(function (x) { return x[1]; });
+      $('#strBar').style.width = pct + '%'; $('#strPct').textContent = pct + '%';
+      $('#strTip').textContent = miss.length ? 'Add ' + miss.slice(0, 2).join(' and ') + ' to get quotes you can compare.' : 'Suppliers have everything they need to quote.';
+    };
+    var read = function () {
+      var v = what.value.trim(), box = $('#insight');
+      if (v.length < 3) { box.hidden = true; score(); return; }
+      var n = parseNeed(v);
+      auto($('#pQty'), n.qty ? n.qty.toLocaleString('en-CA') + (n.noun ? ' ' + n.noun : '') : '', 'qty'); auto($('#pCity'), n.city, 'city');
+      if (n.prov && (!$('#pProv').value || filled.prov === $('#pProv').value)) { $('#pProv').value = n.prov; filled.prov = n.prov; }
+      if (n.cat && !c0 && (!$('#pCat').value || filled.cat === $('#pCat').value)) { $('#pCat').value = n.cat.id; filled.cat = n.cat.id; }
+      var c = cat($('#pCat').value) || n.cat, sups = c ? D.suppliers.filter(function (s) { return s.cats.indexOf(c.id) >= 0; }) : [];
+      $('#inChips').innerHTML = needChips(n);
+      $('#inSup').textContent = c ? sups.length + (sups.length === 1 ? ' sample supplier in ' : ' sample suppliers in ') + c.name + ' would receive this request.' : 'Pick a category so we can route this to the right suppliers.';
+      $('#inMatch').innerHTML = n.matches.map(function (p) { return '<div class="match"><span class="th"><img src="' + IMG(p.img) + '" alt=""></span><span><a href="product.html?id=' + p.id + '">' + esc(p.name) + '</a><span class="muted">' + esc(sup(p.sup).name) + '. ' + (estimate(p, n) || (p.min == null ? 'Price on request.' : money(p.min) + ' to ' + money(p.max) + ' per ' + p.unit + '.')) + '</span></span></div>'; }).join('');
+      $('#inMatchHead').hidden = !n.matches.length;
+      $('#inTell').innerHTML = c ? c.tell.slice(0, 3).map(function (x) { return '<li>' + ic('check', 'ic-s') + '<span>' + x + '</span></li>'; }).join('') : '';
+      $('#inTellHead').hidden = !c; if (c) $('#inTellCat').textContent = c.name.toLowerCase();
+      box.hidden = false; score();
+    };
+    what.addEventListener('input', read); $('#postForm').addEventListener('input', score); $('#pCat').addEventListener('change', read);
+    $('#postForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var bad = [];
+      if (!what.value.trim() && !quote.length) bad.push('what you need'); if (!$('#pQty').value.trim()) bad.push('a quantity'); if (!$('#pCity').value.trim()) bad.push('a delivery city'); if (!/^\S+@\S+\.\S+$/.test($('#pEmail').value)) bad.push('a work email');
+      if (bad.length) { toast('Add ' + bad.join(', ') + ' to post your request.'); return; }
+      $('#postResult').hidden = false; $('#postResult').scrollIntoView({ block: 'center' });
     });
-  }
+    drawList(); read();
+  };
 
-  function supplierPage() {
-    var g = $('#storeGrid'); if (!g) return;
-    g.innerHTML = PRODUCTS.filter(function (p) { return p.sup === 's1'; }).map(card).join('');
-  }
+  pages.companies = function () { companies($('#coGrid'), $('#coTabs')); };
 
-  function business() {
-    var box = $('#approvals'); if (!box) return;
-    box.addEventListener('click', function (e) {
-      var b = e.target.closest('[data-decide]'); if (!b) return;
-      var row = b.closest('.approval'), yes = b.dataset.decide === 'approve';
-      $('.acts', row).innerHTML = '<span class="' + (yes ? 'state-ok' : 'state-no') + '">' + (yes ? 'Approved' : 'Declined') + '</span>';
+  pages.terms = function () {
+    var amt = $('#plAmt'), draw = function () {
+      var days = +$('input[name=term]:checked').value, d = new Date(); d.setDate(d.getDate() + days);
+      var v = Math.max(0, parseFloat(amt.value.replace(/[^\d.]/g, '')) || 0);
+      $('#plDate').textContent = d.toLocaleDateString('en-CA', { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' });
+      $('#plText').textContent = 'You keep ' + money(v) + ' in your account for ' + days + ' days while the stock is on your shelves.';
+    };
+    $('#planner').addEventListener('input', draw); draw();
+  };
+
+  pages.business = function () {
+    $('#approvals').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-decide]'); if (!b) return; var yes = b.dataset.decide === 'approve';
+      $('.acts', b.closest('.approval')).innerHTML = '<span class="' + (yes ? 'state-ok' : 'state-no') + '">' + (yes ? 'Approved' : 'Declined') + '</span>';
       toast(yes ? 'Approved. The purchase order goes to the supplier.' : 'Declined. The requester is notified.');
     });
-  }
+  };
+
+  pages.contact = function () {
+    $('#contactForm').addEventListener('submit', function (e) { e.preventDefault(); $('#contactResult').hidden = false; $('#contactResult').scrollIntoView({ block: 'center' }); });
+  };
 
   /* ---------- boot ---------- */
-  // Hide a photo that fails to load so the tinted tile shows instead of a broken icon.
   document.addEventListener('error', function (e) { if (e.target.tagName === 'IMG') e.target.style.visibility = 'hidden'; }, true);
-
   document.addEventListener('DOMContentLoaded', function () {
-    var h = $('#site-header'), f = $('#site-footer');
-    if (h) h.innerHTML = header();
-    if (f) f.innerHTML = footer();
-    counts();
-    home(); requests(); pdp(); supplierPage(); business();
-
+    chrome(); faqs(); tabsets();
+    $$('[data-catstrip]').forEach(catStrip);
+    if (pages[page]) pages[page]();
     document.addEventListener('click', function (e) {
       var q = e.target.closest('[data-quote]'); if (q) { addQuote(q.dataset.quote); return; }
       var t = e.target.closest('[data-toast]'); if (t) { toast(t.dataset.toast); return; }
       var s = e.target.closest('[data-save]');
-      if (s) {
-        var id = s.dataset.save, i = saved.indexOf(id);
-        if (i >= 0) saved.splice(i, 1); else saved.push(id);
-        store.set('b2b.saved', saved); s.setAttribute('aria-pressed', i < 0); counts();
-        toast(i < 0 ? 'Saved to your list.' : 'Removed from your list.');
-      }
+      if (s) { var id = s.dataset.save, i = saved.indexOf(id); if (i >= 0) saved.splice(i, 1); else saved.push(id); store.set('b2b.saved', saved); s.setAttribute('aria-pressed', i < 0); counts(); toast(i < 0 ? 'Saved. Find it under Saved in the header.' : 'Removed from Saved.'); }
     });
     document.addEventListener('change', function (e) {
-      var c = e.target.closest('[data-compare]'); if (!c) return;
-      var id = c.dataset.compare, i = compare.indexOf(id);
-      if (c.checked && i < 0) {
-        if (compare.length >= 4) { c.checked = false; toast('You can compare up to four products.'); return; }
-        compare.push(id);
-      } else if (!c.checked && i >= 0) compare.splice(i, 1);
+      var c = e.target.closest('[data-compare]'); if (!c) return; var id = c.dataset.compare, i = compare.indexOf(id);
+      if (c.checked && i < 0) { if (compare.length >= 4) { c.checked = false; toast('You can compare up to four products.'); return; } compare.push(id); } else if (!c.checked && i >= 0) compare.splice(i, 1);
       drawTray();
     });
     $('#trayGo').addEventListener('click', openCompare);

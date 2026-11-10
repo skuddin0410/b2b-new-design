@@ -1,0 +1,55 @@
+<!-- {"title":"Post a request for quotes","desc":"Describe what you need once. Matching Canadian suppliers reply with pricing you can compare side by side.","page":"post","nav":"buyers"} -->
+<section class="phero phero-buy">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / Post a request</nav>
+    <h1 class="ruled">Tell suppliers what you need</h1>
+    <p class="lead">One request reaches every matching supplier. Free for buyers, with no commitment to order.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap cols cols-w">
+    <form class="form panel card" id="postForm" novalidate>
+      <div class="protect" id="toSup" hidden style="padding:12px 16px"><span class="small">Sending to <b id="toSupName"></b> first. Other matching suppliers can also quote.</span></div>
+      <label>What do you need?<textarea class="input" id="pWhat" placeholder="For example: 2,000 corrugated shipping boxes, 12 x 10 x 8 in, delivered to Mississauga next month"></textarea><small>Write it the way you would say it. We fill in the fields below from your description.</small></label>
+      <div id="qlBox" hidden><span class="label">From your quote list</span><div class="qlist" id="qList"></div></div>
+      <div class="two">
+        <label>Quantity<input class="input" id="pQty" type="text" placeholder="2,000 boxes"></label>
+        <label>Category<select class="select" id="pCat"><option value="">Choose a category</option></select></label>
+      </div>
+      <div class="two">
+        <label>Delivery city<input class="input" id="pCity" type="text" placeholder="Mississauga"></label>
+        <label>Province or territory<select class="select" id="pProv"><option value="">Select</option></select></label>
+      </div>
+      <div class="two">
+        <label>Needed by<input class="input" id="pDate" type="date"></label>
+        <label>Target budget in CAD <small>Optional</small><input class="input" id="pBudget" type="text" inputmode="numeric" placeholder="5,000"></label>
+      </div>
+      <div class="two">
+        <label>Your name<input class="input" id="pName" type="text" autocomplete="name"></label>
+        <label>Company<input class="input" id="pCo" type="text" autocomplete="organization"></label>
+      </div>
+      <label>Work email<input class="input" id="pEmail" type="email" autocomplete="email" placeholder="you@company.ca"></label>
+      <button class="btn btn-buy" type="submit">Post request</button>
+      <div class="protect" id="postResult" hidden><h3>Preview only. Your request was not sent.</h3><p class="small" style="margin-top:6px">This prototype is not connected to the B2B Market portal yet. Once connected, this step creates the request and notifies matching suppliers.</p></div>
+    </form>
+    <aside class="aside-sticky">
+      <div class="panel card">
+        <div class="row" style="justify-content:space-between"><h3>Request strength</h3><b id="strPct" style="font:700 18px var(--display);color:var(--ink)">0%</b></div>
+        <div class="meter meter-blue" style="margin-top:10px"><i id="strBar" style="width:0"></i></div>
+        <p class="small" id="strTip" style="margin-top:10px" aria-live="polite"></p>
+      </div>
+      <div class="insight" id="insight" hidden aria-live="polite">
+        <h3>{{ic:spark}}What we understood</h3>
+        <div class="chips" id="inChips"></div>
+        <p class="small" id="inSup"></p>
+        <h3 id="inMatchHead" style="font-size:14.5px">Listings that look like a match</h3>
+        <div class="stack" id="inMatch" style="gap:8px"></div>
+        <h3 id="inTellHead" class="plain" style="font-size:14.5px;display:block">Suppliers of <span id="inTellCat"></span> usually ask about</h3>
+        <ul class="tell" id="inTell" style="margin-top:0"></ul>
+        <p class="tiny muted">Matched by rules on sample listings. Estimates are not quotes.</p>
+      </div>
+      <div class="panel card"><h3>What happens next</h3>
+        <ul class="ticks small" style="margin-top:12px"><li>{{ic:check ic-s}}<span>Matching suppliers get your request.</span></li><li>{{ic:check ic-s}}<span>Up to ten reply with price, delivery and terms.</span></li><li>{{ic:check ic-s}}<span>You compare them side by side and pick one, or none.</span></li></ul></div>
+    </aside>
+  </div>
+</section>

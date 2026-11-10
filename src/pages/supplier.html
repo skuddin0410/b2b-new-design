@@ -1,0 +1,50 @@
+<!-- {"title":"Supplier storefront","desc":"Supplier storefront on B2B Market: listings, capabilities and verification.","page":"supplier","nav":"suppliers"} -->
+<section class="phero" style="padding-bottom:28px">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <a href="suppliers.html">Suppliers</a> / <span data-s="name"></span></nav>
+    <div class="row" style="gap:20px;margin-top:22px;align-items:center">
+      <span class="avatar" id="sAvatar" style="width:84px;height:84px;font-size:28px;background:#fff;color:var(--navy);border-radius:14px"></span>
+      <div style="flex:1;min-width:240px"><span class="badge badge-glass">Sample storefront</span><h1 data-s="name" style="margin-top:8px;font-size:clamp(26px,3vw,38px)"></h1><p id="sLine" style="margin-top:4px"></p></div>
+      <div class="row"><a class="btn btn-buy" id="sAsk" href="post-request.html">Request a quote</a><button class="btn btn-glass" type="button" data-toast="Messaging opens in your buyer portal once you sign in.">Message</button></div>
+    </div>
+  </div>
+</section>
+<div class="wrap">
+  <div class="statbar panel">
+    <div class="stat"><b id="sFounded"></b><span>Year founded</span></div>
+    <div class="stat"><b id="sType"></b><span>Business type</span></div>
+    <div class="stat"><b id="sServes"></b><span>Delivers to</span></div>
+    <div class="stat"><b id="sListings"></b><span>Listings on B2B Market</span></div>
+  </div>
+</div>
+<section class="section">
+  <div class="wrap cols">
+    <div class="stack" style="gap:44px">
+      <div><h2>About</h2><p id="sAbout" style="margin-top:10px;max-width:68ch"></p><div class="taglist" id="sCats" style="margin-top:14px"></div></div>
+      <div><h2>What this supplier can do</h2><div class="taglist" id="sCaps" style="margin-top:14px"></div></div>
+      <div><h2 style="margin-bottom:16px">Products</h2><div class="grid-p" id="sGrid"></div></div>
+      <div><h2>Reviews</h2><div class="empty" style="margin-top:14px"><h3>No reviews yet</h3><p class="muted">Reviews come only from buyers with a completed order on B2B Market.</p></div></div>
+    </div>
+    <aside class="aside-sticky">
+      <div class="panel card" id="verification">
+        <h3>Verification</h3><p class="small muted">What our team checks before a supplier can list.</p>
+        <ul class="checklist" style="margin-top:12px">
+          <li><span>Business registration</span><span class="pending">Sample profile</span></li>
+          <li><span>Business address</span><span class="pending">Sample profile</span></li>
+          <li><span>GST/HST number</span><span class="pending">Sample profile</span></li>
+          <li><span>Certificates on file</span><span class="pending">None uploaded</span></li>
+        </ul>
+        <p class="note">On a live storefront each line shows “Checked” only after our team has seen the document.</p>
+      </div>
+      <div class="panel card">
+        <h3>Reply record</h3>
+        <dl class="kv" style="margin-top:12px"><dt>Typical reply time</dt><dd>After 10 quotes</dd><dt>Requests answered</dt><dd>After 10 quotes</dd></dl>
+        <p class="note">Measured by the platform from real quotes, never typed in by the supplier.</p>
+      </div>
+      <div class="panel card" style="border-top:5px solid var(--red)">
+        <h3>For this supplier</h3><p class="small" style="margin-top:6px"><b id="sReqs" style="color:var(--ink)"></b> open buying requests match these categories today.</p>
+        <a class="btn btn-sell btn-s btn-block" style="margin-top:12px" href="requests.html">See matching requests</a>
+      </div>
+    </aside>
+  </div>
+</section>

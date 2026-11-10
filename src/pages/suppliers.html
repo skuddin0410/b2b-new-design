@@ -1,0 +1,26 @@
+<!-- {"title":"Canadian supplier directory","desc":"Find Canadian wholesale suppliers by category and province on B2B Market.","page":"suppliers","nav":"suppliers"} -->
+<section class="phero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / Suppliers</nav>
+    <h1 class="ruled">Find a Canadian supplier</h1>
+    <p class="lead">Search by what they sell and where they deliver. Open a storefront to see listings, capabilities and what our team has checked.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <form class="toolbar" id="supFilters" style="justify-content:flex-start">
+      <label class="sr" for="sQ">Search suppliers</label><input class="input" id="sQ" type="search" placeholder="Search by name, city or product" style="max-width:340px">
+      <label class="sr" for="sCat">Category</label><select id="sCat"><option value="">All categories</option></select>
+      <label class="sr" for="sProv">Province</label><select id="sProv"><option value="">All provinces</option></select>
+      <strong id="supCount" style="color:var(--ink);margin-left:auto" aria-live="polite"></strong>
+    </form>
+    <div class="grid-s" id="supGrid"></div>
+    <p class="note">Sample supplier profiles for demonstration. They are not verified businesses.</p>
+  </div>
+</section>
+<section class="section-s section-alt">
+  <div class="wrap"><div class="band">
+    <div class="band-buy"><h2>Let suppliers come to you</h2><p>Post one request and matching suppliers reply with pricing.</p><p><a class="btn btn-white" href="post-request.html">Post a request</a></p></div>
+    <div class="band-sell"><h2>Get listed here</h2><p>Create a free supplier profile and list your catalogue.</p><p><a class="btn btn-white" href="{{REGISTER}}">Register as a supplier</a></p></div>
+  </div></div>
+</section>

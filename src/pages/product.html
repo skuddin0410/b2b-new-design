@@ -1,0 +1,66 @@
+<!-- {"title":"Product","desc":"Wholesale product listing with quantity pricing in CAD.","page":"product","nav":"products"} -->
+<div class="wrap">
+  <nav class="crumbs crumbs-light" aria-label="Breadcrumb"><a href="index.html">Home</a> / <a href="categories.html" id="crumbCat">Category</a> / <span id="crumbName"></span></nav>
+  <div class="pdp">
+    <div class="gallery">
+      <div class="main"><img id="pImg" src="" alt=""></div>
+      <p class="note">Category photo shown. Suppliers add their own photos.</p>
+    </div>
+    <div class="buy">
+      <div>
+        <p class="small muted" id="pSub"></p>
+        <h1 id="pName"></h1>
+        <p id="pDesc" style="margin-top:10px"></p>
+        <div class="row" style="margin-top:12px"><span class="badge">Sample listing</span><span class="badge badge-red">{{ic:leaf ic-s}}Canadian supplier</span></div>
+      </div>
+      <div><span class="label">Price by quantity</span><div id="ladder"></div><p class="note" id="moqLine"></p></div>
+      <div>
+        <span class="label">Customization</span>
+        <div class="opt" role="group" aria-label="Customization"><button type="button" aria-pressed="true">None</button><button type="button" aria-pressed="false">Add my logo</button><button type="button" aria-pressed="false">Custom specification</button></div>
+        <p class="note">Custom work is priced in the supplier’s quote.</p>
+      </div>
+      <div>
+        <label class="label" for="qty" id="unitLabel">Quantity</label>
+        <div class="row" style="gap:14px"><div class="qty"><button type="button" id="qMinus" aria-label="Decrease quantity">−</button><input id="qty" type="number" inputmode="numeric" min="1"><button type="button" id="qPlus" aria-label="Increase quantity">+</button></div><span class="small" id="nudge" aria-live="polite" style="flex:1;min-width:200px"></span></div>
+      </div>
+      <div class="total" id="totalBox" aria-live="polite"><span>Unit price <b id="unitPrice" style="color:var(--ink)"></b></span><span>Indicative total <strong id="lineTotal"></strong></span><span class="tiny muted">Before tax and delivery</span></div>
+      <div class="cta-row"><button class="btn btn-buy" type="button" id="pAdd">Add to quote list</button><a class="btn btn-dark" id="pAsk" href="post-request.html">Request a quote now</a><button class="btn btn-line" type="button" data-toast="Messaging opens in your buyer portal once you sign in.">Message supplier</button></div>
+    </div>
+    <aside class="aside-sticky">
+      <div class="panel card" style="padding:18px">
+        <div class="sup-head"><span class="avatar" id="supAvatar"></span><div><strong id="supName"></strong><span class="small muted" id="supLoc"></span></div></div>
+        <dl class="kv" style="margin:14px 0"><dt>Type</dt><dd id="supType"></dd><dt>Serves</dt><dd id="supServes"></dd><dt>Status</dt><dd>Sample profile</dd></dl>
+        <a class="btn btn-line btn-s btn-block" id="supLink" href="supplier.html">Visit storefront</a>
+      </div>
+      <div class="protect"><h3>{{ic:shield}}Order Protection <span class="badge badge-soon">Coming soon</span></h3>
+        <ul class="ticks"><li>{{ic:check ic-s}}Payment held until delivery</li><li>{{ic:check ic-s}}Help if the order is late or not as quoted</li></ul>
+        <a class="link" style="margin-top:10px" href="order-protection.html">How it works {{ic:arrow ic-s}}</a></div>
+    </aside>
+  </div>
+
+  <section class="section-s" id="altBox">
+    <h2 style="font-size:22px;margin-bottom:6px">Other suppliers for this</h2>
+    <p class="small muted" style="margin-bottom:14px">Same type of product from different suppliers, so you can ask more than one.</p>
+    <div class="table-box"><table><thead><tr><th scope="col">Listing</th><th scope="col">Supplier</th><th scope="col">Price range</th><th scope="col">Minimum</th><th scope="col">Ships in</th></tr></thead><tbody id="altRows"></tbody></table></div>
+  </section>
+
+  <section class="section-s duo" style="align-items:start">
+    <div>
+      <h2 style="font-size:22px;margin-bottom:14px">Specifications</h2>
+      <div class="table-box"><table><tbody id="specRows"></tbody></table></div>
+      <p class="note">Sample specifications. Confirm every detail with the supplier before ordering.</p>
+    </div>
+    <div class="insight"><h3>{{ic:spark}}Before you ask for a quote</h3><p class="small">Include these and suppliers can price it the first time:</p><ul class="tell" id="tellList"></ul></div>
+  </section>
+
+  <section class="section-s">
+    <div class="tabs" role="tablist" aria-label="Buyer feedback"><button class="tab" role="tab" type="button" aria-selected="true" aria-controls="paneReviews">Reviews</button><button class="tab" role="tab" type="button" aria-selected="false" aria-controls="paneQa">Questions</button></div>
+    <div class="pane" id="paneReviews" role="tabpanel"><div class="empty"><h3>No reviews yet</h3><p class="muted">Only buyers with a completed order can review, so every review here comes from a real purchase.</p></div></div>
+    <div class="pane" id="paneQa" role="tabpanel" hidden><div class="empty"><h3>Ask the first question</h3><p class="muted">Questions and the supplier’s answers are shown here for every buyer.</p></div></div>
+  </section>
+
+  <section class="section-s" style="padding-bottom:64px">
+    <div class="sec-head"><div><h2>Similar products</h2><p class="small">Tick Compare on two or more to see them side by side.</p></div></div>
+    <div class="grid-p" id="related"></div>
+  </section>
+</div>

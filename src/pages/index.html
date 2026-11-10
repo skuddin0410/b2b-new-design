@@ -1,0 +1,173 @@
+<!-- {"title":"Canadian wholesale and B2B marketplace","desc":"Source wholesale products from Canadian suppliers. Post one request, compare quotes in CAD, or sell to buyers across Canada.","page":"home","nav":""} -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="seg" id="heroSeg" role="tablist" aria-label="I am here to">
+        <button type="button" role="tab" aria-selected="true" data-side="buy">I’m buying</button>
+        <button type="button" role="tab" aria-selected="false" data-side="sell">I’m selling</button>
+      </div>
+      <h1 class="ruled">Where Canadian businesses buy and sell wholesale</h1>
+
+      <div id="heroBuy">
+        <p class="lead">Describe what you need in plain words. We read the quantity, city and category, then send it to the suppliers who can fill it.</p>
+        <form class="smart" id="needForm">
+          {{ic:spark}}
+          <label class="sr" for="need">What do you need?</label>
+          <input id="need" type="text" placeholder="2,000 shipping boxes to Mississauga next month" autocomplete="off">
+          <button class="btn btn-buy" type="submit">Get quotes</button>
+        </form>
+        <div class="smart-out" id="needOut" aria-live="polite"></div>
+      </div>
+
+      <div id="heroSell" hidden>
+        <p class="lead">Buyers post what they need. Pick what you sell and quote on live requests, with no cold calls and no listing fees.</p>
+        <form class="smart" id="sellForm">
+          {{ic:store}}
+          <label class="sr" for="sellCat">What do you sell?</label>
+          <select id="sellCat"></select>
+          <button class="btn btn-sell" type="submit">See requests</button>
+        </form>
+        <div class="smart-out" id="sellOut" aria-live="polite"></div>
+      </div>
+
+      <ul class="hero-points">
+        <li>{{ic:check ic-s}}Free to join</li>
+        <li>{{ic:check ic-s}}Prices in CAD</li>
+        <li>{{ic:check ic-s}}Buy, sell or both with one account</li>
+      </ul>
+    </div>
+
+    <aside class="qcard" aria-label="Example of quotes compared side by side">
+      <div class="qcard-head">
+        <div class="row"><span class="badge badge-blue">Example</span><span class="small muted">3 quotes received</span></div>
+        <h2>4 manual pallet jacks, 5,500 lb, to Mississauga</h2>
+      </div>
+      <div class="qrow best">
+        <strong>Great Lakes Material Handling</strong><span class="price">$2,076</span>
+        <span class="meta">$489 each, $120 delivery. Ships in 3 to 5 business days.</span>
+        <span class="row"><span class="badge badge-ok">{{ic:check ic-s}}Fastest, full price known</span></span>
+      </div>
+      <div class="qrow">
+        <strong>SafeSite Supply</strong><span class="price">$1,808</span>
+        <span class="meta">$452 each. Ships in 7 to 10 business days. Net 30.</span>
+        <span class="flag">{{ic:alert ic-s}}Delivery is not in this quote. Ask before you choose.</span>
+      </div>
+      <div class="qrow">
+        <strong>Prairie Lift &amp; Supply</strong><span class="price">$1,970</span>
+        <span class="meta">$415 each, $310 delivery. Ships in 2 to 3 weeks.</span>
+        <span class="flag">{{ic:alert ic-s}}Rated 5,000 lb, below the 5,500 lb you asked for.</span>
+      </div>
+      <div class="qcard-foot">We check every quote against your request and flag what does not match.</div>
+    </aside>
+  </div>
+</section>
+
+<section class="section-s">
+  <div class="wrap">
+    <div class="catstrip" id="catStrip"></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Built for both sides of the deal</h2><p>Many businesses do both. One account and one company profile cover buying and selling.</p></div></div>
+    <div class="doors">
+      <div class="door">
+        <span class="who">For buyers</span>
+        <h3 style="font-size:23px">Source with less back and forth</h3>
+        <ul class="ticks">
+          <li>{{ic:check ic-s}}<span><b>One request, many quotes.</b> Stop emailing suppliers one by one.</span></li>
+          <li>{{ic:check ic-s}}<span><b>Prices and minimums up front.</b> Every listing shows its quantity breaks.</span></li>
+          <li>{{ic:check ic-s}}<span><b>Quotes checked for you.</b> We flag missing delivery costs and spec mismatches.</span></li>
+        </ul>
+        <div class="row"><a class="btn btn-buy" href="buyers.html">How buying works</a><a class="btn btn-line" href="products.html">Browse products</a></div>
+      </div>
+      <div class="door door-sell">
+        <span class="who">For suppliers</span>
+        <h3 style="font-size:23px">Reach buyers who are ready to order</h3>
+        <ul class="ticks">
+          <li>{{ic:check ic-s}}<span><b>Requests that fit what you sell.</b> Matched to your categories and service area.</span></li>
+          <li>{{ic:check ic-s}}<span><b>Free profile and listings.</b> No sales team needed to be found.</span></li>
+          <li>{{ic:check ic-s}}<span><b>Ten quotes per request.</b> You compete with a few suppliers, not hundreds.</span></li>
+        </ul>
+        <div class="row"><a class="btn btn-sell" href="sell.html">How selling works</a><a class="btn btn-line" href="requests.html">See open requests</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Ready to ship</h2><p>In stock with Canadian suppliers. The price drops as your quantity goes up.</p></div><a class="link" href="products.html">See all products {{ic:arrow ic-s}}</a></div>
+    <div class="grid-p" id="readyGrid"></div>
+    <p class="note">Sample listings while supplier inventory is onboarded. Prices are indicative until a supplier quotes.</p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Up and running in minutes</h2><p>No paperwork and no waiting on phone calls.</p></div>
+      <div class="tabs" id="howTabs" role="group" aria-label="Show steps for"><button class="tab" type="button" aria-pressed="true" data-side="buy">Buyers</button><button class="tab" type="button" aria-pressed="false" data-side="sell">Suppliers</button></div></div>
+    <div class="steps" id="howBuy">
+      <div class="step"><h3>Search or post a request</h3><p>Find products by name or category, or describe what you need once.</p></div>
+      <div class="step"><h3>Compare quotes side by side</h3><p>Matching suppliers reply with price, delivery and terms.</p></div>
+      <div class="step"><h3>Order from the supplier you pick</h3><p>Negotiate directly. Nothing is ordered until you confirm.</p></div>
+      <div class="step"><h3>Track every request and order</h3><p>Requests, quotes and orders stay in one dashboard.</p></div>
+    </div>
+    <div class="steps steps-sell" id="howSell" hidden>
+      <div class="step"><h3>Register your business</h3><p>Create a free supplier account in a few minutes.</p></div>
+      <div class="step"><h3>Pass the business review</h3><p>We check your registration before you can list.</p></div>
+      <div class="step"><h3>List products with price breaks</h3><p>Show CAD price ranges and minimum orders.</p></div>
+      <div class="step"><h3>Quote on matching requests</h3><p>Reply from one dashboard and win repeat buyers.</p></div>
+    </div>
+    <p style="margin-top:34px"><a class="btn btn-glass" href="how-it-works.html">Read the full guide</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Buyers are asking for these right now</h2><p>Suppliers: each request takes ten quotes, so early replies get seen.</p></div><a class="link" href="requests.html">See all buying requests {{ic:arrow ic-s}}</a></div>
+    <div class="req-list" id="reqPreview"></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Trade with more confidence</h2><p>What stands behind each listing and each request.</p></div></div>
+    <div class="trust">
+      <a class="tcard panel" href="how-it-works.html#verification">{{ic:shield ic-l}}<h3>Verified suppliers</h3><p>Business registration is reviewed before a supplier can list.</p><span class="link">How we verify {{ic:arrow ic-s}}</span></a>
+      <a class="tcard panel" href="order-protection.html">{{ic:scale ic-l}}<h3>Order Protection <span class="badge badge-soon">Coming soon</span></h3><p>Your payment is held until the order arrives as agreed.</p><span class="link">See how it works {{ic:arrow ic-s}}</span></a>
+      <a class="tcard panel" href="net-terms.html">{{ic:calendar ic-l}}<h3>Net terms <span class="badge badge-soon">Coming soon</span></h3><p>Receive stock now and pay in 30, 60 or 90 days.</p><span class="link">Try the planner {{ic:arrow ic-s}}</span></a>
+      <a class="tcard panel" href="business.html">{{ic:users ic-l}}<h3>Business accounts</h3><p>Team roles, approval steps, purchase orders and spend reports.</p><span class="link">Tour the account {{ic:arrow ic-s}}</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Canadian businesses on B2B Market</h2><p>100 companies onboarded across six provinces, from manufacturers to utilities.</p></div><a class="link" href="companies.html">See who is here {{ic:arrow ic-s}}</a></div>
+    <div class="cos" id="coGrid"></div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="wrap mag">
+    <a class="mag-cover" href="https://canadiansme.ca/" aria-label="CanadianSME Small Business Magazine"><img src="https://www.b2bmarket.ca/images/canadiansme-magazine.webp" alt="CanadianSME Small Business Magazine cover"></a>
+    <div>
+      <span class="badge badge-glass">From the team behind CanadianSME</span>
+      <h2 class="ruled" style="margin-top:14px">Backed by CanadianSME Small Business Magazine</h2>
+      <p style="margin-top:16px;max-width:64ch">CanadianSME spotlights growing companies and the leaders behind them. B2B Market grew out of that community, built on one idea: sourcing should take minutes, not months.</p>
+      <div class="arts" id="arts"></div>
+      <p style="margin-top:22px"><a class="btn btn-sell" href="https://canadiansme.ca/">Read the magazine</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="band">
+      <div class="band-buy"><h2>Start sourcing</h2><p>Post one request and compare quotes from Canadian suppliers. Free for buyers, with no commitment to order.</p><p><a class="btn btn-white" href="post-request.html">Post a request</a></p></div>
+      <div class="band-sell"><h2>Start selling</h2><p>Create a free supplier profile, list your catalogue and quote on requests in your category.</p><p><a class="btn btn-white" href="{{REGISTER}}">Register as a supplier</a></p></div>
+    </div>
+  </div>
+</section>

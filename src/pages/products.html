@@ -1,0 +1,25 @@
+<!-- {"title":"Wholesale products from Canadian suppliers","desc":"Browse wholesale products with quantity pricing in CAD, minimum orders and lead times from Canadian suppliers.","page":"products","nav":"products"} -->
+<div class="wrap">
+  <nav class="crumbs crumbs-light" aria-label="Breadcrumb"><a href="index.html">Home</a> / Products</nav>
+  <div class="sec-head"><div><h1 id="prodTitle" style="font-size:clamp(26px,2.8vw,36px)">Products</h1><p>Every listing shows its price breaks, minimum order and lead time before you ask.</p></div></div>
+  <div class="catalog" style="padding-bottom:64px">
+    <form class="panel filters" id="filters" aria-label="Filter products">
+      <fieldset id="fCat"><legend>Category</legend></fieldset>
+      <fieldset><legend>Minimum order</legend>
+        <label><input type="radio" name="moq" value="any" checked>Any quantity</label>
+        <label><input type="radio" name="moq" value="2">2 or fewer</label>
+        <label><input type="radio" name="moq" value="5">5 or fewer</label>
+        <label><input type="radio" name="moq" value="10">10 or fewer</label>
+      </fieldset>
+      <fieldset id="fProv"><legend>Supplier location</legend></fieldset>
+      <fieldset><legend>Price</legend><label><input type="checkbox" id="fPriced">Price shown on listing</label></fieldset>
+      <button class="btn btn-ghost btn-s" type="button" id="fClear">Clear filters</button>
+    </form>
+    <div>
+      <div class="toolbar"><strong id="prodCount" style="color:var(--ink)" aria-live="polite"></strong>
+        <label class="row small">Sort by <select id="prodSort"><option value="match">Best match</option><option value="low">Price, low to high</option><option value="high">Price, high to low</option><option value="fast">Fastest to ship</option><option value="moq">Lowest minimum order</option></select></label></div>
+      <div class="grid-p" id="prodGrid"></div>
+      <p class="note">Sample listings while supplier inventory is onboarded. Prices are indicative until a supplier quotes.</p>
+    </div>
+  </div>
+</div>
