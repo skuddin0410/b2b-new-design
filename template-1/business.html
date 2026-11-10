@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business account | B2B Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/logo.png">
+</head>
+<body data-page="business">
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / Business account</nav>
+
+  <div class="section-head">
+    <div>
+      <div class="badge-row"><span class="badge badge-soon">Concept</span><span class="badge badge-sample">Sample company and figures</span></div>
+      <h1 style="margin-top:8px">Northline Retail Group</h1>
+      <p>One account for the whole company. Buyers request, managers approve, finance pays.</p>
+    </div>
+    <a class="btn btn-primary" href="https://www.b2bmarket.ca/register/">Create a business account</a>
+  </div>
+
+  <div class="dash">
+    <nav class="panel dash-nav" aria-label="Account">
+      <a href="#overview" aria-current="true"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>Overview</a>
+      <a href="#approvals"><svg class="ic" aria-hidden="true"><use href="#i-flow"/></svg>Approvals</a>
+      <a href="#team"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Team</a>
+      <a href="#invoices"><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg>Invoices</a>
+      <a href="#reorder"><svg class="ic" aria-hidden="true"><use href="#i-repeat"/></svg>Reorder lists</a>
+      <a href="#tax"><svg class="ic" aria-hidden="true"><use href="#i-percent"/></svg>Tax exemption</a>
+    </nav>
+
+    <div id="overview">
+      <div class="kpis">
+        <div class="panel kpi"><span>Spend this month</span><b>$48,260</b></div>
+        <div class="panel kpi"><span>Waiting for approval</span><b>3 orders</b></div>
+        <div class="panel kpi"><span>Open requests</span><b>5</b></div>
+        <div class="panel kpi"><span>Due on net terms</span><b>$12,500</b></div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="panel" id="approvals">
+          <h2>Orders waiting for your approval</h2>
+          <div class="approval">
+            <div><strong>40 bundles, Corrugated Shipping Boxes</strong><span class="small muted">Requested by Priya S. PackagePro. $7,120. PO-1184</span></div>
+            <div class="acts"><button class="btn btn-quiet btn-s" type="button" data-decide="decline">Decline</button><button class="btn btn-primary btn-s" type="button" data-decide="approve">Approve</button></div>
+          </div>
+          <div class="approval">
+            <div><strong>12 units, 15.6 in Business Laptop</strong><span class="small muted">Requested by Marc T. TechSupply Canada. $8,988. PO-1185</span></div>
+            <div class="acts"><button class="btn btn-quiet btn-s" type="button" data-decide="decline">Decline</button><button class="btn btn-primary btn-s" type="button" data-decide="approve">Approve</button></div>
+          </div>
+          <div class="approval">
+            <div><strong>60 cases, Multipurpose Copy Paper</strong><span class="small muted">Requested by Dana W. Office Essentials. $2,460. PO-1186</span></div>
+            <div class="acts"><button class="btn btn-quiet btn-s" type="button" data-decide="decline">Decline</button><button class="btn btn-primary btn-s" type="button" data-decide="approve">Approve</button></div>
+          </div>
+          <p class="note">Orders over a person's limit wait here before they reach the supplier.</p>
+        </div>
+
+        <div class="panel">
+          <h2>Spend by category</h2>
+          <div class="bars">
+            <div class="bar"><span>Packaging</span><i style="width:100%"></i><b>$18,400</b></div>
+            <div class="bar"><span>Electronics</span><i style="width:72%"></i><b>$13,250</b></div>
+            <div class="bar"><span>Office Supplies</span><i style="width:49%"></i><b>$9,010</b></div>
+            <div class="bar"><span>Retail Products</span><i style="width:41%"></i><b>$7,600</b></div>
+          </div>
+          <button class="btn btn-line btn-s" style="margin-top:18px" type="button" data-toast="Reports export as CSV for your accounting software.">Download report</button>
+        </div>
+
+        <div class="panel" id="team">
+          <h2>Team and spending limits</h2>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th scope="col">Person</th><th scope="col">Role</th><th scope="col">Limit per order</th></tr></thead>
+              <tbody>
+                <tr><td>Amara O.</td><td>Admin, approver</td><td>No limit</td></tr>
+                <tr><td>Priya S.</td><td>Buyer</td><td>$5,000</td></tr>
+                <tr><td>Marc T.</td><td>Buyer</td><td>$5,000</td></tr>
+                <tr><td>Dana W.</td><td>Buyer</td><td>$2,000</td></tr>
+                <tr><td>Luc B.</td><td>Finance</td><td>View and pay only</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="btn btn-line btn-s" style="margin-top:14px" type="button" data-toast="Invite a team member by work email.">Invite a team member</button>
+        </div>
+
+        <div class="panel" id="invoices">
+          <h2>Invoices</h2>
+          <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th scope="col">Invoice</th><th scope="col">Amount</th><th scope="col">Status</th></tr></thead>
+              <tbody>
+                <tr><td>INV-3021, PO-1179</td><td>$6,240</td><td><span class="badge badge-soon">Due Dec 4, Net 30</span></td></tr>
+                <tr><td>INV-3018, PO-1175</td><td>$6,260</td><td><span class="badge badge-soon">Due Dec 19, Net 60</span></td></tr>
+                <tr><td>INV-3009, PO-1168</td><td>$3,180</td><td><span class="badge badge-verified">Paid</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">Every invoice shows GST/HST and your PO number.</p>
+        </div>
+
+        <div class="panel" id="reorder">
+          <h2>Reorder lists</h2>
+          <ul class="checklist">
+            <li><span><strong style="color:var(--ink)">Monthly shipping supplies</strong><br><span class="small muted">Boxes, mailers, labels. Last ordered Oct 14.</span></span><button class="btn btn-primary btn-s" type="button" data-toast="All items on this list were added to your quote list.">Reorder</button></li>
+            <li><span><strong style="color:var(--ink)">New-hire kit</strong><br><span class="small muted">Laptop, stationery bundle. Last ordered Sep 2.</span></span><button class="btn btn-primary btn-s" type="button" data-toast="All items on this list were added to your quote list.">Reorder</button></li>
+          </ul>
+        </div>
+
+        <div class="panel" id="tax">
+          <h2>Tax exemption</h2>
+          <p class="small">Upload a certificate once. We apply it to eligible orders and show it on the invoice.</p>
+          <div class="empty" style="margin-top:14px;padding:20px">
+            <h3>No certificate on file</h3>
+            <button class="btn btn-line btn-s" style="margin-top:8px" type="button" data-toast="Upload a PDF of your exemption certificate.">Upload a certificate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

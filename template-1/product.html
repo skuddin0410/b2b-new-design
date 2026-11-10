@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product | B2B Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/logo.png">
+</head>
+<body data-page="product">
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <a href="index.html#categories" id="crumbCat">Category</a> / <span id="crumbName"></span></nav>
+
+  <div class="pdp" id="pdp">
+    <div class="gallery">
+      <div class="main"><img id="pImg" src="" alt=""></div>
+      <div class="thumbs" aria-label="More photos">
+        <div>Front</div><div>Inside</div><div>Stacked</div><div>On pallet</div><div>Video</div>
+      </div>
+      <p class="note">Category photo shown. Suppliers add their own photos and a short video.</p>
+    </div>
+
+    <div class="buy">
+      <div>
+        <p class="small muted" id="pSub"></p>
+        <h1 id="pName"></h1>
+        <div class="badge-row" style="margin-top:12px">
+          <span class="badge badge-sample">Sample listing</span>
+          <span class="badge badge-ca"><svg class="ic ic-s" aria-hidden="true"><use href="#i-leaf"/></svg>Ships from Canada</span>
+          <span class="badge badge-blue">Ready to ship</span>
+        </div>
+      </div>
+
+      <div>
+        <span class="label">Price by quantity</span>
+        <div id="ladder"></div>
+        <p class="note" id="moqLine"></p>
+      </div>
+
+      <div>
+        <span class="label">Size</span>
+        <div class="opt" role="group" aria-label="Size">
+          <button type="button" aria-pressed="true">Standard</button>
+          <button type="button" aria-pressed="false">Large</button>
+          <button type="button" aria-pressed="false">Custom size</button>
+        </div>
+      </div>
+
+      <div>
+        <span class="label">Customization</span>
+        <div class="opt" role="group" aria-label="Customization">
+          <button type="button" aria-pressed="true">None</button>
+          <button type="button" aria-pressed="false">Printed logo</button>
+          <button type="button" aria-pressed="false">Private label</button>
+        </div>
+        <p class="note">Custom options are priced in the supplier's quote.</p>
+      </div>
+
+      <div>
+        <label class="label" for="qty" id="unitLabel">Quantity</label>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+          <div class="qty">
+            <button type="button" id="qMinus" aria-label="Decrease quantity">−</button>
+            <input id="qty" type="number" inputmode="numeric">
+            <button type="button" id="qPlus" aria-label="Increase quantity">+</button>
+          </div>
+          <span class="small" id="nudge" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="total" aria-live="polite">
+        <span>Unit price <b id="unitPrice" style="color:var(--ink)"></b></span>
+        <span>Indicative total <strong id="lineTotal"></strong></span>
+        <span class="tiny muted">Before tax and delivery</span>
+      </div>
+
+      <div class="cta-row">
+        <button class="btn btn-primary" type="button" id="pAdd">Add to quote list</button>
+        <a class="btn btn-blue" href="requests.html#post">Request a quote now</a>
+        <button class="btn btn-line" type="button" data-toast="Messaging opens in your buyer portal once you sign in.">Message supplier</button>
+      </div>
+
+      <div class="panel" style="padding:16px 18px">
+        <h3 style="font-size:15.5px">Order a sample first</h3>
+        <p class="small" style="margin-top:4px" id="sampleLine"></p>
+        <button class="btn btn-quiet btn-s" style="margin-top:10px" type="button" data-toast="Sample orders are a planned feature.">Order a sample</button>
+      </div>
+    </div>
+
+    <aside class="aside">
+      <div class="panel">
+        <div class="sup-head">
+          <span class="avatar" id="supAvatar"></span>
+          <div><strong style="color:var(--ink)" data-sup-name></strong><br><span class="small muted" data-sup-loc></span></div>
+        </div>
+        <dl class="kv">
+          <dt>Verification</dt><dd>Sample profile</dd>
+          <dt>Replies in</dt><dd>Shown after first 10 quotes</dd>
+          <dt>Languages</dt><dd>English, French</dd>
+          <dt>Serves</dt><dd>ON, QC</dd>
+        </dl>
+        <a class="btn btn-line btn-s btn-block" href="supplier.html">Visit storefront</a>
+      </div>
+      <div class="protect">
+        <h3><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>Order Protection <span class="badge badge-soon">Coming soon</span></h3>
+        <ul>
+          <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>Payment held until delivery</li>
+          <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>Help if the order is late or not as quoted</li>
+          <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>Net 30 to 90 terms for approved buyers</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <div class="tabpanes">
+    <div class="tabs" id="pTabs" role="tablist" aria-label="Product details">
+      <button class="tab" role="tab" type="button" aria-selected="true" aria-controls="paneSpecs">Specifications</button>
+      <button class="tab" role="tab" type="button" aria-selected="false" aria-controls="paneShip">Lead time and delivery</button>
+      <button class="tab" role="tab" type="button" aria-selected="false" aria-controls="paneReviews">Reviews</button>
+      <button class="tab" role="tab" type="button" aria-selected="false" aria-controls="paneQa">Questions</button>
+    </div>
+
+    <div class="pane" id="paneSpecs" role="tabpanel">
+      <div class="table-box">
+        <table>
+          <tbody>
+            <tr><th scope="row">Selling unit</th><td>As listed in the title</td></tr>
+            <tr><th scope="row">Country of origin</th><td>To be confirmed by the supplier</td></tr>
+            <tr><th scope="row">Certifications</th><td>None uploaded. Certificates appear here once the supplier adds the document.</td></tr>
+            <tr><th scope="row">Customization</th><td>Printed logo, custom size, private label</td></tr>
+            <tr><th scope="row">Payment</th><td>Bank transfer or card through B2B Market</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Sample specifications. Confirm every detail with the supplier before ordering.</p>
+    </div>
+
+    <div class="pane" id="paneShip" role="tabpanel" hidden>
+      <div class="table-box">
+        <table>
+          <thead><tr><th scope="col">Order size</th><th scope="col">Ready to ship in</th></tr></thead>
+          <tbody id="leadRows"></tbody>
+        </table>
+      </div>
+      <p class="note">Delivery cost depends on your city and is included in the supplier's quote. Sample lead times.</p>
+    </div>
+
+    <div class="pane" id="paneReviews" role="tabpanel" hidden>
+      <div class="empty">
+        <h3>No reviews yet</h3>
+        <p class="muted">Only buyers with a completed order can review a product, so every review here is from a real purchase.</p>
+      </div>
+    </div>
+
+    <div class="pane" id="paneQa" role="tabpanel" hidden>
+      <div class="empty">
+        <h3>Ask the first question</h3>
+        <p class="muted">Questions and the supplier's answers are shown here for every buyer.</p>
+        <button class="btn btn-line btn-s" style="margin-top:12px" type="button" data-toast="Sign in to ask the supplier a question.">Ask a question</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-head"><h2>Similar products</h2><p class="small muted">Tick Compare on two or more to see them side by side.</p></div>
+    <div class="grid-products" id="related"></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

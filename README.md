@@ -1,10 +1,22 @@
-# B2B Market: new marketplace design
+# B2B Market: design templates
+
+Three versions of the site, each in its own folder. With GitHub Pages on this branch:
+
+| Template | Folder | Link |
+| --- | --- | --- |
+| 1. First marketplace build (five pages) | `template-1/` | https://skuddin0410.github.io/b2b-new-design/template-1/ |
+| 2. Multi-page build, one page per category | `template-2/` | https://skuddin0410.github.io/b2b-new-design/template-2/ |
+| 3. Original B2B Market design with blue gradients | `template-3/` | https://skuddin0410.github.io/b2b-new-design/template-3/ |
+
+Template 3 is the original single-file design export with three changes: blue to dark-blue gradients on the navy and blue buttons, panels and badges; the CanadianSME promotion sections and footer line removed; the newsletter sign-up removed. It is one bundled file, so edit it in the design tool rather than by hand.
+
+The rest of this README describes Template 2. Paths below are inside `template-2/`.
 
 A front-end prototype for [b2bmarket.ca](https://www.b2bmarket.ca), the Canadian wholesale marketplace backed by CanadianSME. Static HTML, CSS and JavaScript.
 
 ## View it
 
-Open `index.html`, or turn on GitHub Pages (Settings, Pages, deploy from this branch, `/ (root)`).
+Open `template-2/index.html`.
 
 ## Pages
 
@@ -42,7 +54,7 @@ Do not edit the root `.html` files or `assets/js/data.js` by hand. They are gene
 - Header, footer and icons: `tools/build.py`
 - Styles and behaviour: `assets/css/styles.css`, `assets/js/app.js`
 
-Then run `python3 tools/build.py`.
+Then run `python3 tools/build.py` from inside `template-2/`.
 
 ## Real data and sample data
 

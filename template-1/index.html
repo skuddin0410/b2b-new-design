@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B2B Market | Canadian wholesale and B2B marketplace</title>
+<meta name="description" content="Source wholesale products from Canadian suppliers. Compare quantity pricing in CAD, post one request and get quotes from matching suppliers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/logo.png">
+</head>
+<body data-page="home">
+<div id="site-header"></div>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <nav class="panel rail" id="rail" aria-label="Categories"></nav>
+
+      <div class="composer">
+        <h1>Tell Canadian suppliers what you need</h1>
+        <p>Post one request. Matching suppliers reply with prices in CAD, and you compare the quotes side by side.</p>
+        <form class="ask" id="askForm">
+          <label class="sr" for="askText">What are you sourcing?</label>
+          <textarea id="askText" placeholder="For example: 2,000 corrugated shipping boxes, 12 x 10 x 8 in"></textarea>
+          <div class="ask-row">
+            <label class="field"><span class="muted">Quantity</span><input id="askQty" type="text" inputmode="numeric" placeholder="2,000"></label>
+            <label class="field"><svg class="ic ic-s" aria-hidden="true"><use href="#i-pin"/></svg><span class="sr">Delivery city</span><input id="askCity" type="text" placeholder="Delivery city"></label>
+            <button class="btn btn-blue" type="submit">Get quotes</button>
+          </div>
+        </form>
+        <div class="chips">
+          <span>Try</span>
+          <button class="chip" type="button" data-fill="Rooftop solar panels, 400 W, with mounting hardware">Solar panels</button>
+          <button class="chip" type="button" data-fill="Corrugated shipping boxes, 12 x 10 x 8 in">Corrugated boxes</button>
+          <button class="chip" type="button" data-fill="Business laptops, Core i5, 16GB RAM">Laptops</button>
+          <button class="chip" type="button" data-fill="Electric pallet jack, 4,500 lb capacity">Pallet jack</button>
+          <button class="chip" type="button" data-fill="Ergonomic office chairs, mesh back">Office chairs</button>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="panel account">
+          <h2>Buy, sell or both with one account</h2>
+          <p class="small muted">Free to register. No credit card needed.</p>
+          <a class="btn btn-primary btn-block" href="https://www.b2bmarket.ca/register/">Join free</a>
+          <a class="btn btn-line btn-block" href="https://portal.b2bmarket.ca/login">Sign in</a>
+        </div>
+        <div class="panel livebox">
+          <h2><span class="pulse" aria-hidden="true"></span>Buyers are asking for</h2>
+          <ul id="liveList"></ul>
+          <a class="small" href="requests.html">See all buying requests</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" aria-label="How we protect your trade">
+    <div class="wrap">
+      <div class="assure">
+        <a href="supplier.html#verification"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg><span><strong>Verified suppliers</strong><span class="d">Business registration reviewed before a supplier can list.</span></span></a>
+        <a href="#protection"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Order Protection <span class="badge badge-soon">Coming soon</span></strong><span class="d">Payment released when your order arrives as agreed.</span></span></a>
+        <a href="#terms"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span><strong>Net terms <span class="badge badge-soon">Coming soon</span></strong><span class="d">Receive stock now and pay in 30, 60 or 90 days.</span></span></a>
+        <a href="https://www.b2bmarket.ca/contact/"><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg><span><strong>A team in Mississauga</strong><span class="d">Monday to Friday, 9 a.m. to 6 p.m. ET.</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ready">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Ready to ship</h2>
+          <p>In stock with Canadian suppliers. The price drops as your quantity goes up, and every listing shows the breaks.</p>
+        </div>
+        <div class="tabs" id="readyTabs" role="group" aria-label="Filter by category"></div>
+      </div>
+      <div class="grid-products" id="readyGrid"></div>
+      <p class="note">Sample listings while supplier inventory is onboarded. Prices are indicative until a supplier quotes.</p>
+    </div>
+  </section>
+
+  <section class="section section-white" id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Shop by category</h2>
+          <p>Eight categories, from packaging to solar.</p>
+        </div>
+        <a class="btn btn-line btn-s" href="https://www.b2bmarket.ca/browse/">Browse the full catalogue</a>
+      </div>
+      <div class="cats" id="catGrid"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Quick ways in</h2>
+          <p>Ranked from the listings themselves, not from paid placement.</p>
+        </div>
+      </div>
+      <div class="ranks">
+        <div class="panel rank"><h3>Smallest first order</h3><p class="small muted">Good for trying a new supplier.</p><ol id="rankMoq"></ol></div>
+        <div class="panel rank"><h3>Fastest to ship</h3><p class="small muted">Shortest stated lead time.</p><ol id="rankLead"></ol></div>
+        <div class="panel rank"><h3>Biggest volume savings</h3><p class="small muted">Largest drop from first to last price break.</p><ol id="rankSave"></ol></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Open buying requests</h2>
+          <p>Suppliers: these buyers are waiting for quotes. Each request takes ten quotes, so early replies get seen.</p>
+        </div>
+        <a class="btn btn-primary btn-s" href="requests.html">View all requests</a>
+      </div>
+      <div class="req-list" id="reqPreview"></div>
+    </div>
+  </section>
+
+  <section class="section" id="companies">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Canadian businesses on B2B Market</h2>
+          <p>100 companies onboarded across six provinces. Here are some of them.</p>
+        </div>
+        <div class="tabs" id="coTabs" role="group" aria-label="Filter by province"></div>
+      </div>
+      <div class="companies" id="coGrid"></div>
+      <p class="note">Each company links to its own website.</p>
+    </div>
+  </section>
+
+  <section class="section section-white" id="protection">
+    <div class="wrap split">
+      <div>
+        <span class="badge badge-soon">Coming soon</span>
+        <h2 style="margin-top:10px">Order Protection</h2>
+        <p style="margin-top:10px">Pay through B2B Market and your money stays on hold until the order arrives as agreed. If it is late or not what was quoted, our team steps in.</p>
+        <p class="note">Planned feature. Coverage, limits and fees will be published before launch.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Agree the order</h3><p>Quantity, price and delivery date are fixed in the quote.</p></div>
+        <div class="step"><h3>Pay B2B Market</h3><p>We hold the payment. The supplier sees it is secured.</p></div>
+        <div class="step"><h3>Receive and check</h3><p>Confirm the goods match the quote.</p></div>
+        <div class="step"><h3>Supplier is paid</h3><p>We release the payment once you confirm.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Built for teams that buy together</h2>
+          <p>A business account gives your company one place to request, approve and pay.</p>
+        </div>
+        <a class="btn btn-line btn-s" href="business.html">See the business account</a>
+      </div>
+      <div class="features">
+        <div class="feature"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg><h3>Team members and roles</h3><p>Add buyers, approvers and finance. Set a spending limit for each person.</p></div>
+        <div class="feature"><svg class="ic" aria-hidden="true"><use href="#i-flow"/></svg><h3>Approval steps</h3><p>Orders over a limit wait for a manager before they reach the supplier.</p></div>
+        <div class="feature"><svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg><h3>Purchase orders and invoices</h3><p>Add your PO number at checkout. Download GST/HST invoices any time.</p></div>
+        <div class="feature"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><h3>Spend reports</h3><p>See spend by category, supplier and team member each month.</p></div>
+        <div class="feature"><svg class="ic" aria-hidden="true"><use href="#i-repeat"/></svg><h3>Reorder lists</h3><p>Save what you buy often and reorder it in two clicks.</p></div>
+        <div class="feature"><svg class="ic" aria-hidden="true"><use href="#i-percent"/></svg><h3>Tax exemption</h3><p>Upload an exemption certificate once and apply it to eligible orders.</p></div>
+      </div>
+      <p class="note">Concept for a planned feature set.</p>
+    </div>
+  </section>
+
+  <section class="section-tight" id="terms">
+    <div class="wrap duo">
+      <div class="panel card">
+        <h3>Net 30, 60 or 90 payment terms <span class="badge badge-soon">Coming soon</span></h3>
+        <p>Receive inventory now and pay when your own customers pay you. Fees, limits and eligibility will be announced at launch.</p>
+        <ul class="ticks">
+          <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>Suppliers are paid up front</li>
+          <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>One monthly statement for all your orders</li>
+        </ul>
+        <a class="btn btn-line btn-s" style="margin-top:16px" href="https://www.b2bmarket.ca/financing/">Register your interest</a>
+      </div>
+      <div class="panel card">
+        <h3>Try a new supplier with less risk <span class="badge badge-soon">Coming soon</span></h3>
+        <p>Order a sample before you commit, and return an unopened first order if it is not right for your business.</p>
+        <ul class="ticks">
+          <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>Sample orders at the list price, below the minimum order</li>
+          <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>First-order returns, with terms set by each supplier</li>
+        </ul>
+        <a class="btn btn-line btn-s" style="margin-top:16px" href="product.html">See it on a product page</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>Sell wholesale to buyers across Canada</h2>
+          <p>Free supplier profile and listings. Receive requests that match your categories and answer them from one dashboard. B2B Market is backed by CanadianSME Small Business Magazine.</p>
+        </div>
+        <div class="band-actions">
+          <a class="btn btn-white" href="https://www.b2bmarket.ca/register/">Register as a supplier</a>
+          <a class="btn btn-blue" href="supplier.html">See a storefront</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

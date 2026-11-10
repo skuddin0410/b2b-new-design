@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PackagePro supplier storefront | B2B Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/logo.png">
+</head>
+<body data-page="supplier">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="store-hero">
+    <div class="wrap store-top">
+      <span class="avatar">PP</span>
+      <div>
+        <div class="badge-row">
+          <span class="badge badge-sample">Sample storefront</span>
+          <span class="badge badge-verified"><svg class="ic ic-s" aria-hidden="true"><use href="#i-shield"/></svg>Verified business</span>
+        </div>
+        <h1 style="margin-top:8px">PackagePro</h1>
+        <p style="margin-top:4px">Packaging manufacturer and distributor, Mississauga, Ontario</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-white" href="requests.html#post">Request a quote</a>
+        <button class="btn btn-blue" type="button" data-toast="Messaging opens in your buyer portal once you sign in.">Message</button>
+        <button class="btn btn-blue" type="button" data-toast="PackagePro is saved to your suppliers.">Save supplier</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="statbar">
+      <div class="stat"><b>2011</b><span>Year founded</span></div>
+      <div class="stat"><b>Under 4 hours</b><span>Typical reply time</span></div>
+      <div class="stat"><b>96%</b><span>Requests answered</span></div>
+      <div class="stat"><b>ON, QC</b><span>Delivers to</span></div>
+      <div class="stat"><b>300 bundles</b><span>Monthly capacity</span></div>
+    </div>
+    <p class="note">Sample figures. Reply time and answer rate will be measured by the platform, not entered by the supplier.</p>
+  </div>
+
+  <section class="section">
+    <div class="wrap cols">
+      <div style="display:grid;gap:40px">
+        <div>
+          <h2>About</h2>
+          <p style="margin-top:10px;max-width:68ch">PackagePro supplies corrugated boxes, mailers, labels and stretch wrap to e-commerce sellers, warehouses and retailers in Ontario and Quebec. Stock sizes ship within a week. Custom sizes and printed boxes are quoted on request.</p>
+        </div>
+
+        <div>
+          <h2>What this supplier can do</h2>
+          <div class="taglist" style="margin-top:14px">
+            <span class="tag">Custom sizes</span><span class="tag">Printed logo</span><span class="tag">Private label</span><span class="tag">Sample orders</span><span class="tag">Pallet delivery</span><span class="tag">Service in English and French</span><span class="tag">Recycled materials</span>
+          </div>
+        </div>
+
+        <div>
+          <h2>Facility photos</h2>
+          <div class="photos" style="margin-top:14px">
+            <div class="photo-slot">Warehouse photo</div>
+            <div class="photo-slot">Production line photo</div>
+            <div class="photo-slot">Loading dock photo</div>
+            <div class="photo-slot">Team photo</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-head" style="margin-bottom:16px"><h2>Products</h2><a class="small" href="index.html#ready">See all products</a></div>
+          <div class="grid-products" id="storeGrid"></div>
+        </div>
+
+        <div>
+          <h2>Reviews</h2>
+          <div class="empty" style="margin-top:14px">
+            <h3>No reviews yet</h3>
+            <p class="muted">Reviews come only from buyers with a completed order on B2B Market.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside style="display:grid;gap:16px">
+        <div class="panel card" id="verification">
+          <h3>Verification</h3>
+          <p class="small muted">What our team has checked for this supplier.</p>
+          <ul class="checklist" style="margin-top:12px">
+            <li><span>Business registration</span><span class="ok"><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>Checked</span></li>
+            <li><span>Business address</span><span class="ok"><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>Checked</span></li>
+            <li><span>GST/HST number</span><span class="ok"><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg>Checked</span></li>
+            <li><span>Liability insurance</span><span class="pending">Not provided</span></li>
+            <li><span>Site visit</span><span class="pending">Not done</span></li>
+          </ul>
+          <p class="note">Sample checklist. Each line is ticked only when our team has seen the document.</p>
+        </div>
+
+        <div class="panel card">
+          <h3>Certificates</h3>
+          <ul class="checklist" style="margin-top:8px">
+            <li><span>FSC chain of custody</span><span class="pending">Document not uploaded</span></li>
+            <li><span>ISO 9001</span><span class="pending">Document not uploaded</span></li>
+          </ul>
+          <p class="note">A certificate shows as verified only after the supplier uploads it and we confirm it.</p>
+        </div>
+
+        <div class="panel card">
+          <h3>Ownership</h3>
+          <div class="taglist" style="margin-top:12px"><span class="tag">Canadian-owned</span><span class="tag">Women-owned</span></div>
+          <p class="note">Self-declared by the supplier. Buyers can filter by ownership to meet supplier diversity goals.</p>
+        </div>
+
+        <div class="panel card">
+          <h3>Trading terms</h3>
+          <dl class="kv" style="margin-bottom:0">
+            <dt>Payment terms</dt><dd>Net 30 for approved accounts</dd>
+            <dt>Minimum order</dt><dd>From 5 bundles</dd>
+            <dt>Hours</dt><dd>Mon to Fri, 8 to 5 ET</dd>
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
