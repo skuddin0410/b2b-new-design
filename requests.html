@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open buying requests | B2B Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/logo.png">
+</head>
+<body data-page="requests">
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / Buying requests</nav>
+
+  <div class="section-head">
+    <div>
+      <h1>Open buying requests</h1>
+      <p>Canadian buyers post what they need. Suppliers reply with a quote. Each request accepts ten quotes, then closes.</p>
+    </div>
+    <strong id="reqCount" aria-live="polite" style="color:var(--ink)"></strong>
+  </div>
+
+  <div class="board">
+    <form class="panel filters" id="filters" aria-label="Filter requests">
+      <fieldset id="fCats"><legend>Category</legend></fieldset>
+      <fieldset id="fProvs"><legend>Deliver to</legend></fieldset>
+      <fieldset><legend>Quote slots</legend><label><input type="checkbox" id="fOpen">5 or more slots left</label></fieldset>
+    </form>
+
+    <div>
+      <div class="req-list" id="reqList"></div>
+      <p class="note">Sample requests. Buyer names stay private until a supplier quotes.</p>
+    </div>
+
+    <aside style="display:grid;gap:16px">
+      <div class="panel card" id="post">
+        <h2 style="font-size:20px">Post your request</h2>
+        <p class="small muted" style="margin-top:4px">Free for buyers. No commitment to order.</p>
+        <form class="form" id="postForm" style="margin-top:14px" novalidate>
+          <label>What do you need?<textarea class="input" id="pWhat" placeholder="Product, size, material"></textarea></label>
+          <label>Quantity<input class="input" id="pQty" type="text" placeholder="2,000 boxes"></label>
+          <label>Delivery city<input class="input" id="pCity" type="text" placeholder="Mississauga"></label>
+          <label>Needed by<input class="input" id="pDate" type="date"></label>
+          <button class="btn btn-primary btn-block" type="submit">Post request</button>
+        </form>
+        <div class="protect" id="postResult" tabindex="-1" hidden style="margin-top:14px">
+          <h3>Preview only. Your request was not sent.</h3>
+          <p class="small" style="margin-top:6px">This prototype is not connected to the B2B Market portal yet. Once connected, this step creates the request and notifies matching suppliers.</p>
+        </div>
+      </div>
+
+      <div class="panel card">
+        <h3>Suppliers, quote on these requests</h3>
+        <p class="small">Register free, pick your categories and reply from one dashboard.</p>
+        <a class="btn btn-line btn-s btn-block" style="margin-top:12px" href="https://www.b2bmarket.ca/register/">Register as a supplier</a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
